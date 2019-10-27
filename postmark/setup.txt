@@ -1,0 +1,8 @@
+#launch docker
+docker run -it postmark
+
+#commands to run
+set size 1000 9000
+set number 50000
+set transactions 100000
+run

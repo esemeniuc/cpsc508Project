@@ -1,0 +1,7 @@
+#Redis Benchmark
+#start redis server
+docker run -it --rm --name=redis redis:5-alpine
+
+#start benchmark
+docker run -it --rm --name=memtier --link=redis redislabs/memtier_benchmark -s 172.17.0.2
+
