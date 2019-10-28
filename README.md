@@ -90,15 +90,15 @@ run" | sudo perf stat -e dTLB-load-misses,iTLB-load-misses postmark```
 
 
 #### Apex-MAP
+Apex-Map focuses on global data movement and measures how fast global data can be fed into computational units.
 
-
-Change your params in the apex-map/input file <br> 
-Note: the MAXMEM flag is the number of DOUBLES that the benchmark will allocate, make sure that this will not exceed your <br>
+- Change your params in the apex-map/input file <br> 
+-- Note: the MAXMEM flag is the number of DOUBLES that the benchmark will allocate, make sure that this will not exceed your <br>
 
 Build steps: <br> <br>
 
-generate code to generate apex code ```gcc gen.pub.c -lm ``` <br>
-run code to generate code```./a.out``` <br>
-compile benchmark code ```gcc Apex.c -lm``` <br>
-run the benchmark```sudo perf stat -e dTLB-loads-misses ./a.out ``` <br>
+- generate code to generate apex code ```gcc gen.pub.c -lm ``` <br>
+- run code to generate code```./a.out``` <br>
+- compile benchmark code ```gcc Apex.c -lm``` <br>
+- run the benchmark```sudo perf stat -e dTLB-loads-misses ./a.out ``` <br>
  
