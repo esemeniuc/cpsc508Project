@@ -56,6 +56,9 @@ And there you have it!
 ---
 
 
+- Start Redis Server: ```docker run -it --rm --name=redis redis:5-alpine```
+- Start benchmark: ```docker run -it --rm --name=memtier --link=redis redislabs/memtier_benchmark -s 172.17.0.2```
+
 
 #### Polybench
 
@@ -78,6 +81,11 @@ Note, there are a bunch of different options that can be passed as macros using 
 
 ---
 
+- Install: ```sudo apt install postmark```
+- Run the benchmark: ```echo "set size 1000 9000
+set number 50000
+set transactions 100000
+run" | sudo perf stat -e dTLB-load-misses,iTLB-load-misses postmark```
 
 
 
