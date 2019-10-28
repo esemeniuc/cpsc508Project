@@ -6,9 +6,9 @@ Idea list: https://docs.google.com/spreadsheets/d/1d5IcAig6RYBsYNjxQyyqtmS26Ah80
 
 ### PERF
 
-STD: pref run 
+STD: ```perf run``` 
 
-sudo perf stat -e dTLB-loads-misses {benchmark command}
+```sudo perf stat -e dTLB-loads-misses {benchmark command}```
 
 NOTE: for Perf stat the following flags and data should be be recorded
  - dTLB-loads                                         
