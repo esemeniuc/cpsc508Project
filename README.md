@@ -4,6 +4,24 @@ CPSC 508/436C with Margo Seltzer
 Idea list: https://docs.google.com/spreadsheets/d/1d5IcAig6RYBsYNjxQyyqtmS26Ah80Q3ZWhdd11BQCLo/edit#gid=0
 
 
+### PREF
+
+STD: pref run 
+
+sudo perf stat -e dTLB-loads-misses {benchmark command}
+
+NOTE: for Perf stat the following flags and data should be be recorded
+ - dTLB-loads                                         
+ - dTLB-load-misses                                   
+ - dTLB-stores                                        
+ - dTLB-store-misses                                  
+ - dTLB-prefetches                                   
+ - dTLB-prefetch-misses                              
+ - iTLB-loads                                        
+ - iTLB-load-misses                                  
+
+
+
 ### Reproduction steps to run tests
 
 ---
@@ -65,6 +83,14 @@ Note, there are a bunch of different options that can be passed as macros using 
 
 #### Apex-MAP
 
----
 
+change your params in the apex-map/input file <br> 
+Note that the MAXMEM flag is the number of DOUBLES that the benchmark will allocate
 
+Build steps: <br>
+
+generate code to generate apex code ```gcc gen.pub.c -lm ```
+run code to generate code```./a.out```
+compile benchmark code ```gcc Apex.c -lm```
+run the benchmark```sudo perf stat -e dTLB-loads-misses ./a.out ```
+ 
