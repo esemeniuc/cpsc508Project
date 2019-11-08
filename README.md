@@ -18,19 +18,19 @@ sudo apt-get update
 sudo apt-get install libhugetlbfs-dev
 ```
 
-To check total number of huge pages: ```grep HugePages_Total /proc/meminfo```
-To check the huge page size: ```grep Hugepagesize /proc/meminfo```
-To check the number that are free: ```grep HugePages_Free /proc/meminfo```
+To check total number of huge pages: ```grep HugePages_Total /proc/meminfo``` <br>
+To check the huge page size: ```grep Hugepagesize /proc/meminfo``` <br>
+To check the number that are free: ```grep HugePages_Free /proc/meminfo``` <br>
 
 To allocate hugepages ```echo <# of pages> | sudo tee /proc/sys/vm/nr_hugepages```
 
-To view hugepage pools: ```hugeadm --pool-list```
-To set the min pool page size: ```hugeadm --pool-pages-min 2MB:512```
-To set the max pool page size: ```# hugeadm --pool-pages-max 2MB:2048```
+To view hugepage pools: ```hugeadm --pool-list``` <br>
+To set the min pool page size: ```hugeadm --pool-pages-min 2MB:512``` <br>
+To set the max pool page size: ```# hugeadm --pool-pages-max 2MB:2048``` 
 
 To use libhugetlbfs features hugetlbfs must be mounted.  Each hugetlbfs mount point is associated with a page size.  To choose the size, use the pagesize mount option.  If this option is omitted, the default huge page size will be used.
 
-Make a new directory for your page size: i.e. ```sudo mkdir -p /mnt/hugetlbfs-2MB``
+Make a new directory for your page size: i.e. ```sudo mkdir -p /mnt/hugetlbfs-2MB``` <br>
 Then, mount: ```sudo mount -t hugetlbfs none -o pagesize=2MB /mnt/hugetlbfs-2MB```
 
 To get a full report of set up config: ```hugeadm --explain```
