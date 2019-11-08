@@ -1,0 +1,25 @@
+We use Polybench to demonstrate the effect of non-sequential workloads (which should exhibit poor locality)
+The following is the polybench configuration(s) that will be used to test the system:
+The following selected tests, compiled in the same fashion as the 
+CAL paper - maximum optimization (-03) built for timing (-DPOLYBENCH_TIME), 
+and real-time scheduling (-DPOLYBENCH_LINUX_FIFO_SCHEDULER)
+
+These are all linear algebra operations that might be used in scientific computing situations
+- 2mm (2 Matrix Multiplications, should exhibit bad cache locality, removing effect of caching on data access times) 
+- 3mm (3 Matrix Multiplications, same reason as above)
+- gramschmidt (NOTE: when compiling must add -lm to link math library)
+- atax 
+- mvt
+
+
+# Example: Compile gramschmidt
+gcc -O3 -I utilities 
+-I linear-algebra/kernels/atax 
+utilities/polybench.c 
+linear-algebra/solvers/gramschmidt/gramschmidt.c 
+-DPOLYBENCH_TIME -DPOLYBENCH_FIFO_SCHEDULER 
+-o gramschmidt_time -lc -lm (link math)
+
+Then, to get perf data 
+sudo perf stat -e dTLB-loads-misses {benchmark}
+

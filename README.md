@@ -4,6 +4,43 @@ CPSC 508/436C with Margo Seltzer
 Idea list: https://docs.google.com/spreadsheets/d/1d5IcAig6RYBsYNjxQyyqtmS26Ah80Q3ZWhdd11BQCLo/edit#gid=0
 
 
+### Determining & Managing Page Size
+
+---
+
+Run ```getconf PAGESIZE``` to check the current configured page size 
+To configure page sizes, use the ```hugetlbfs```. https://lwn.net/Articles/375096/
+
+To get hugetlbfs on Ubuntu, run:
+
+```
+sudo apt-get update
+sudo apt-get install libhugetlbfs-dev
+```
+
+To check total number of huge pages: ```grep HugePages_Total /proc/meminfo```
+To check the huge page size: ```grep Hugepagesize /proc/meminfo```
+To check the number that are free: ```grep HugePages_Free /proc/meminfo```
+
+To allocate hugepages ```echo <# of pages> | sudo tee /proc/sys/vm/nr_hugepages```
+
+To view hugepage pools: ```hugeadm --pool-list```
+To set the min pool page size: ```hugeadm --pool-pages-min 2MB:512```
+To set the max pool page size: ```# hugeadm --pool-pages-max 2MB:2048```
+
+To use libhugetlbfs features hugetlbfs must be mounted.  Each hugetlbfs mount point is associated with a page size.  To choose the size, use the pagesize mount option.  If this option is omitted, the default huge page size will be used.
+
+Make a new directory for your page size: i.e. ```sudo mkdir -p /mnt/hugetlbfs-2MB``
+Then, mount: ```sudo mount -t hugetlbfs none -o pagesize=2MB /mnt/hugetlbfs-2MB```
+
+To get a full report of set up config: ```hugeadm --explain```
+
+
+### Setting up emulated NVM
+
+---
+
+
 ### PERF
 
 STD: ```perf run``` 
