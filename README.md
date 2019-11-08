@@ -35,6 +35,7 @@ Then, mount: ```sudo mount -t hugetlbfs none -o pagesize=2MB /mnt/hugetlbfs-2MB`
 
 To get a full report of set up config: ```hugeadm --explain```
 
+Launch applications with ``hugectl --heap <application>``` so hooks will be added to malloc calls, resulting in the use of huge pages
 
 ### Setting up emulated NVM
 
