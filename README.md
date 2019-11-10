@@ -52,10 +52,9 @@ Step 4: Set the GRUB flag in grub.cfg ```memmap=ss[MKG]!nn[MKG]```
 In order to facilitate easy booting between DRAM and PMEM systems: <br>
 Install kexec stuff so we can boot between machines easily: <br>
 sudo apt-get install kexec-tools <br>
-PMEM bootflags: ```export BOOTFLAGS="cat /proc/cmdline memmap=28G\!4G"``` 
+PMEM bootflags: `export BOOTFLAGS="cat /proc/cmdline memmap=28G\!4G"` 
 
-To boot into the PMEM kernel: 
-
+To boot into the PMEM kernel:
 ```
 sudo kexec -l /boot/vmlinuz-5.0.0-32-generic --initrd=/boot/initrd.img-5.0.0-32-generic --append=$BOOTFLAGS 
 sudo systemctl kexec
@@ -70,6 +69,25 @@ Lastly, create and mount a DAX filesystem: <br>
 mkdir /mnt/pmemdir
 mkfs.ext4 /dev/pmem0
 mount -o dax /dev/pmem0 /mnt/pmemdir
+```
+
+### Install libvmmalloc
+Notes: https://github.com/pmem/vmem
+```
+git clone https://github.com/pmem/vmem
+cd vmem
+git checkout tags/1.7
+sudo apt install libndctl-dev libdaxctl-dev autoconf pkg-config
+make
+sudo make install
+```
+
+Demo:
+```
+export VMMALLOC_POOL_SIZE=$((16*1024*1024))
+export VMMALLOC_POOL_DIR="/mnt/pmemdir"
+
+LD_PRELOAD=libvmmalloc.so.1 grep "pmem" /proc/mounts
 ```
 
 ### PERF
