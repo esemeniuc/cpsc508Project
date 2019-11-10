@@ -49,9 +49,20 @@ Step 3: Determine the free memory region for the memmap kernel param. for GRUB: 
 For us, this is: [mem 0x0000000100000000-0x000000087effffff], so we can start at 4G and allocate like 28 GB for pmem <br>
 Step 4: Set the GRUB flag in grub.cfg ```memmap=ss[MKG]!nn[MKG]```
 
+In order to facilitate easy booting between DRAM and PMEM systems: <br>
 Install kexec stuff so we can boot between machines easily: <br>
-sudo apt-get install kexec-tools
+sudo apt-get install kexec-tools <br>
+PMEM bootflags: ```export BOOTFLAGS="cat /proc/cmdline memmap=28G\!4G"``` <br>
+To boot into the PMEM kernel: <br> 
+```sudo kexec -l /boot/vmlinuz-5.0.0-32-generic --initrd=/boot/initrd.img-5.0.0-32-generic --append=$BOOTFLAGS
+sudo systemctl kexec```
+When in the PMEM kernel, simple ```sudo shutdown -r now``` to boot back into DRAM kernel. 
 
+Lastly, create and mount a DAX filesystem: <br>
+
+```mkdir /mnt/pmemdir
+mkfs.ext4 /dev/pmem0
+mount -o dax /dev/pmem0 /mnt/pmemdir```
 
 ### PERF
 
