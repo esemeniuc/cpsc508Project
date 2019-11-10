@@ -22,7 +22,8 @@ To check total number of huge pages: ```grep HugePages_Total /proc/meminfo``` <b
 To check the huge page size: ```grep Hugepagesize /proc/meminfo``` <br>
 To check the number that are free: ```grep HugePages_Free /proc/meminfo``` <br>
 
-To allocate hugepages ```echo <# of pages> | sudo tee /proc/sys/vm/nr_hugepages```
+To allocate hugepages manually ```echo <# of pages> | sudo tee /proc/sys/vm/nr_hugepages```
+
 
 To view hugepage pools: ```hugeadm --pool-list``` <br>
 To set the min pool page size: ```hugeadm --pool-pages-min 2MB:512``` <br>
@@ -40,6 +41,16 @@ Launch applications with ``hugectl --heap <application>``` so hooks will be adde
 ### Setting up emulated NVM
 
 ---
+
+Good resource: https://pmem.io/2016/02/22/pm-emulation.html <br>
+Step 1: Compile Linux kernel with options necessary for NVM emulation: run ```make nconfig``` and choose th appropriate options as described here: https://software.intel.com/en-us/articles/how-to-emulate-persistent-memory-on-an-intel-architecture-server <br>
+Step 2: Run ```sudo update-grub``` to add in the new grub entry <br>
+Step 3: Determine the free memory region for the memmap kernel param. for GRUB: https://nvdimm.wiki.kernel.org/how_to_choose_the_correct_memmap_kernel_parameter_for_pmem_on_your_system <br>
+For us, this is: [mem 0x0000000100000000-0x000000087effffff], so we can start at 4G and allocate like 28 GB for pmem <br>
+Step 4: Set the GRUB flag in grub.cfg ```memmap=ss[MKG]!nn[MKG]```
+
+Install kexec stuff so we can boot between machines easily: <br>
+sudo apt-get install kexec-tools
 
 
 ### PERF
