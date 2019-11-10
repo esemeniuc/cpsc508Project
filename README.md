@@ -36,7 +36,7 @@ Then, mount: ```sudo mount -t hugetlbfs none -o pagesize=2MB /mnt/hugetlbfs-2MB`
 
 To get a full report of set up config: ```hugeadm --explain```
 
-Launch applications with ``hugectl --heap <application>``` so hooks will be added to malloc calls, resulting in the use of huge pages
+Launch applications with ```hugectl --heap <application>``` so hooks will be added to malloc calls, resulting in the use of huge pages
 
 ### Setting up emulated NVM
 
@@ -52,17 +52,25 @@ Step 4: Set the GRUB flag in grub.cfg ```memmap=ss[MKG]!nn[MKG]```
 In order to facilitate easy booting between DRAM and PMEM systems: <br>
 Install kexec stuff so we can boot between machines easily: <br>
 sudo apt-get install kexec-tools <br>
-PMEM bootflags: ```export BOOTFLAGS="cat /proc/cmdline memmap=28G\!4G"``` <br>
-To boot into the PMEM kernel: <br> 
-```sudo kexec -l /boot/vmlinuz-5.0.0-32-generic --initrd=/boot/initrd.img-5.0.0-32-generic --append=$BOOTFLAGS
-sudo systemctl kexec```
+PMEM bootflags: ```export BOOTFLAGS="cat /proc/cmdline memmap=28G\!4G"``` 
+
+To boot into the PMEM kernel: 
+
+```
+sudo kexec -l /boot/vmlinuz-5.0.0-32-generic --initrd=/boot/initrd.img-5.0.0-32-generic --append=$BOOTFLAGS 
+sudo systemctl kexec
+```
+
+
 When in the PMEM kernel, simple ```sudo shutdown -r now``` to boot back into DRAM kernel. 
 
 Lastly, create and mount a DAX filesystem: <br>
 
-```mkdir /mnt/pmemdir
+```
+mkdir /mnt/pmemdir
 mkfs.ext4 /dev/pmem0
-mount -o dax /dev/pmem0 /mnt/pmemdir```
+mount -o dax /dev/pmem0 /mnt/pmemdir
+```
 
 ### PERF
 
