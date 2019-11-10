@@ -81,7 +81,7 @@ sudo make install
 
 Demo:
 ```
-export VMMALLOC_POOL_SIZE=$((16*1024*1024))
+export VMMALLOC_POOL_SIZE=$((27*1024*1024*1024))
 export VMMALLOC_POOL_DIR="/mnt/pmemdir"
 
 LD_PRELOAD=libvmmalloc.so.1 grep "pmem" /proc/mounts
