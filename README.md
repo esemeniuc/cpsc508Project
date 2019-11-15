@@ -89,7 +89,7 @@ LD_PRELOAD=libvmmalloc.so.1 grep "pmem" /proc/mounts
 
 Demo kernel build
 `git clone git://kernel.ubuntu.com/ubuntu/ubuntu-bionic.git && cd ubuntu-bionic`
-
+`git checkout Ubuntu-hwe-5.0.0-36.39_18.04.1`
 
 
 ### PERF
