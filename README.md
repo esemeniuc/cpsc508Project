@@ -87,6 +87,11 @@ export VMMALLOC_POOL_DIR="/mnt/pmemdir"
 LD_PRELOAD=libvmmalloc.so.1 grep "pmem" /proc/mounts
 ```
 
+Demo kernel build
+`git clone git://kernel.ubuntu.com/ubuntu/ubuntu-bionic.git && cd ubuntu-bionic`
+
+
+
 ### PERF
 
 STD: ```perf run``` 
