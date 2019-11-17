@@ -39,30 +39,26 @@ To get a full report of set up config: ```hugeadm --explain```
 Launch applications with ```hugectl --heap <application>``` so hooks will be added to malloc calls, resulting in the use of huge pages
 
 ### Setting up emulated NVM
-
----
+This system is based on Ubuntu 18.04.3 x64
 
 Good resource: https://pmem.io/2016/02/22/pm-emulation.html <br>
-Step 1: Compile Linux kernel with options necessary for NVM emulation: run ```make nconfig``` and choose th appropriate options as described here: https://software.intel.com/en-us/articles/how-to-emulate-persistent-memory-on-an-intel-architecture-server <br>
-Step 2: Run ```sudo update-grub``` to add in the new grub entry <br>
-Step 3: Determine the free memory region for the memmap kernel param. for GRUB: https://nvdimm.wiki.kernel.org/how_to_choose_the_correct_memmap_kernel_parameter_for_pmem_on_your_system <br>
-For us, this is: [mem 0x0000000100000000-0x000000087effffff], so we can start at 4G and allocate like 28 GB for pmem <br>
-Step 4: Set the GRUB flag in grub.cfg ```memmap=ss[MKG]!nn[MKG]```
+Resource 2: https://software.intel.com/en-us/articles/how-to-emulate-persistent-memory-on-an-intel-architecture-server <br>
 
-In order to facilitate easy booting between DRAM and PMEM systems: <br>
+Step 1: Determine the free memory region for the memmap kernel param. for GRUB: https://nvdimm.wiki.kernel.org/how_to_choose_the_correct_memmap_kernel_parameter_for_pmem_on_your_system <br>
+For us, this is: `[mem 0x0000000100000000-0x000000087effffff]`, so we can start at 4G and allocate like 28 GB for pmem <br>
+Step 2: Create the kernel boot flag for your system in the format of `memmap=ss[MKG]!nn[MKG]`. For our system, we use `memmap=28G!4G`
+
+In order to facilitate easy booting between DRAM and PMEM emulation: <br>
 Install kexec stuff so we can boot between machines easily: <br>
-sudo apt-get install kexec-tools <br>
-PMEM bootflags: ```export BOOTFLAGS="cat /proc/cmdline memmap=28G\!4G"``` 
+```sudo apt-get install kexec-tools```
 
-To boot into the PMEM kernel: 
-
+Step 3: Boot into PMEM emulation mode
 ```
+export BOOTFLAGS="cat /proc/cmdline memmap=28G\!4G"
 sudo kexec -l /boot/vmlinuz-5.0.0-32-generic --initrd=/boot/initrd.img-5.0.0-32-generic --append=$BOOTFLAGS 
 sudo systemctl kexec
 ```
-
-
-When in the PMEM kernel, simple ```sudo shutdown -r now``` to boot back into DRAM kernel. 
+When in the PMEM kernel, simply run ```sudo shutdown -r now``` to boot back into DRAM system. 
 
 Lastly, create and mount a DAX filesystem: <br>
 
@@ -82,6 +78,31 @@ If you'd like to get actual memory usage stats for program running on the emulat
 ```LD_PRELOAD=/usr/local/lib/libvmmalloc.so valgrind --tool=massif /home/cs508/loop```
 
 # TODO: Format for 2MB blocks 
+
+
+### Install libvmmalloc
+Notes: https://github.com/pmem/vmem
+```
+git clone https://github.com/pmem/vmem
+cd vmem
+git checkout tags/1.7
+sudo apt install libndctl-dev libdaxctl-dev autoconf pkg-config
+make
+sudo make install
+```
+
+Demo:
+```
+export VMMALLOC_POOL_SIZE=$((27*1024*1024*1024))
+export VMMALLOC_POOL_DIR="/mnt/pmemdir"
+
+LD_PRELOAD=libvmmalloc.so.1 grep "pmem" /proc/mounts
+```
+
+Demo kernel build
+`git clone git://kernel.ubuntu.com/ubuntu/ubuntu-bionic.git && cd ubuntu-bionic`
+`git checkout Ubuntu-hwe-5.0.0-36.39_18.04.1`
+
 
 ### PERF
 
@@ -169,11 +190,13 @@ run" | sudo perf stat -e dTLB-load-misses,iTLB-load-misses postmark```
 
 
 
+
+ ---
 #### Apex-MAP
 Apex-Map focuses on global data movement and measures how fast global data can be fed into computational units.
 
 - Change your params in the apex-map/input file <br> 
--- Note: the MAXMEM flag is the number of DOUBLES that the benchmark will allocate, make sure that this will not exceed your <br>
+-- Note: the MAXMEM flag is the number of DOUBLES that the benchmark will allocate, make sure that this will not exceed your memory<br>
 
 Build steps: <br> <br>
 
@@ -181,4 +204,36 @@ Build steps: <br> <br>
 - run code to generate code```./a.out``` <br>
 - compile benchmark code ```gcc Apex.c -lm``` <br>
 - run the benchmark```sudo perf stat -e dTLB-loads-misses ./a.out ``` <br>
- 
+
+
+
+
+#### Some documentation of APEX MAP
+
+This is the source code we used, there is also some nice documentation basics on apex map here too <br>
+https://crd.lbl.gov/departments/computer-science/PAR/research/previous-projects/apex/ <br>
+
+
+Characterizing the Relation Between Apex-Map Synthetic Probes and Reuse Distance Distributions <br>
+https://ieeexplore.ieee.org/document/5599180 <br>
+
+	This paper has some nice math on the random access patterns of apex map as well as more details on the parameter effects
+
+AdaptMemBench: Application-Specific MemorySubsystem Benchmarking
+https://arxiv.org/pdf/1812.07778.pdf
+	a more recent memory benchmarking tool that tries to do better than apex map
+
+
+Hopscotch: A Micro-benchmark Suite for Memory Performance
+https://github.com/alifahmed/hopscotch
+	this paper has a great break down of memory pressure.
+	
+
+Apex-Map: A Synthetic Scalable Benchmark Probe to Explore Data Access Performance on Highly Parallel Systems (2005)
+https://link.springer.com/chapter/10.1007/11549468_16
+	og paper
+
+Apex-Map: A Global Data Access Benchmark to Analyze HPC Systems and Parallel Programming Paradigms
+https://ieeexplore.ieee.org/document/1560001
+	og paper V2
+
