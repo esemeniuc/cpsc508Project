@@ -68,6 +68,18 @@ mkfs.ext4 /dev/pmem0
 mount -o dax /dev/pmem0 /mnt/pmemdir
 ```
 
+To run stuff on the emulated NVM, <br>
+Install this stuff:
+```sudo apt-get install libpmem1 librpmem1 libpmemblk1 libpmemlog1 libpmemobj1 libpmempool1``` <br>
+Compile libvmmalloc: <br>
+```sudo apt install libndctl-dev``` <br>
+
+If you'd like to get actual memory usage stats for program running on the emulated PMEM: <br>
+```LD_PRELOAD=/usr/local/lib/libvmmalloc.so valgrind --tool=massif /home/cs508/loop```
+
+# TODO: Format for 2MB blocks 
+
+
 ### Install libvmmalloc
 Notes: https://github.com/pmem/vmem
 ```
@@ -130,13 +142,14 @@ Build steps: <br>
 
 For the Redis binding:
 
+- Start Redis: ```redis-server```
 - Clone this: ```git clone http://github.com/brianfrankcooper/YCSB.git```
 - ```cd YCSB```
 - Then compile: ```mvn -pl site.ycsb:redis-binding -am clean package```
 - To load the data: ```./bin/ycsb load redis -s -P workloads/workloada -p "redis.host=127.0.0.1" -p "redis.port=6379" > outputLoad.txt```
 - To test: ```sudo perf stat -e dTLB-loads-misses ./bin/ycsb run redis -s -P workloads/workloada -p "redis.host=127.0.0.1" -p "redis.port=6379" > outputLoad.txt``` 
 
-And there you have it!
+And there you have it! 
 
 
 #### Redis
