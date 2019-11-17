@@ -1,0 +1,16 @@
+SUMMARY -- STATS FOR polybench/results/gramschmidt_pmem_1gb.txt:
+context-switches: 3.35 (+/-) 0.85
+cpu-migrations: 0.0 (+/-) 0.0
+page-faults: 324.3 (+/-) 3.74
+cycles: 6863889544.95 (+/-) 36471436.64
+instructions: 11583316698.1 (+/-) 5005366.07
+branches: 1451868689.3 (+/-) 1450282254.41
+L1-dcache-loads: 3612644708.1 (+/-) 3454877.25
+L1-d-cache-load-misses: 2881043189.25 (+/-) 1181913.89
+LCC-loads: 103975739.25 (+/-) 1331361.56
+LLC-load-misses: 184550.9 (+/-) 178183.4
+L1-icache-load-misses: 499848.55 (+/-) 113277.35
+dTLB-loads: 3614385112.5 (+/-) 4045884.17
+dTLB-load-misses: 1035.15 (+/-) 597.84
+iTLB-loads: 664.1 (+/-) 441.13
+iTLB-load-misses: 533.15 (+/-) 506.06
