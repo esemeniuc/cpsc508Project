@@ -1,0 +1,597 @@
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,907.93 msec task-clock                #    1.000 CPUs utilized          
+                12      context-switches          #    0.004 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               329      page-faults               #    0.113 K/sec                  
+    12,456,374,227      cycles                    #    4.284 GHz                      (30.73%)
+    21,686,743,636      instructions              #    1.74  insn per cycle           (38.43%)
+     2,713,868,447      branches                  #  933.264 M/sec                    (38.47%)
+         2,791,389      branch-misses             #    0.10% of all branches          (38.50%)
+     5,421,410,222      L1-dcache-loads           # 1864.353 M/sec                    (38.54%)
+     3,045,225,032      L1-dcache-load-misses     #   56.17% of all L1-dcache hits    (38.52%)
+       229,446,451      LLC-loads                 #   78.904 M/sec                    (30.81%)
+        20,201,384      LLC-load-misses           #    8.80% of all LL-cache hits     (30.81%)
+   <not supported>      L1-icache-loads                                             
+           971,432      L1-icache-load-misses                                         (30.79%)
+     5,425,011,357      dTLB-loads                # 1865.591 M/sec                    (30.75%)
+             2,145      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.72%)
+             1,994      iTLB-loads                #    0.686 K/sec                    (30.69%)
+               323      iTLB-load-misses          #   16.20% of all iTLB cache hits   (30.67%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.908121467 seconds time elapsed
+
+       2.890041000 seconds user
+       0.002782000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,907.17 msec task-clock                #    1.000 CPUs utilized          
+                 5      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               326      page-faults               #    0.112 K/sec                  
+    12,454,117,319      cycles                    #    4.284 GHz                      (30.69%)
+    21,662,808,524      instructions              #    1.74  insn per cycle           (38.40%)
+     2,714,106,786      branches                  #  933.591 M/sec                    (38.43%)
+         2,774,638      branch-misses             #    0.10% of all branches          (38.46%)
+     5,424,452,932      L1-dcache-loads           # 1865.888 M/sec                    (38.50%)
+     3,047,503,725      L1-dcache-load-misses     #   56.18% of all L1-dcache hits    (38.52%)
+       228,843,343      LLC-loads                 #   78.717 M/sec                    (30.82%)
+        19,517,216      LLC-load-misses           #    8.53% of all LL-cache hits     (30.82%)
+   <not supported>      L1-icache-loads                                             
+           901,339      L1-icache-load-misses                                         (30.82%)
+     5,422,905,790      dTLB-loads                # 1865.356 M/sec                    (30.78%)
+             2,007      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.75%)
+             1,563      iTLB-loads                #    0.538 K/sec                    (30.72%)
+               352      iTLB-load-misses          #   22.52% of all iTLB cache hits   (30.68%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.907412502 seconds time elapsed
+
+       2.887416000 seconds user
+       0.004763000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,777.52 msec task-clock                #    1.000 CPUs utilized          
+                 3      context-switches          #    0.001 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               328      page-faults               #    0.118 K/sec                  
+    11,897,966,628      cycles                    #    4.284 GHz                      (30.71%)
+    21,665,436,342      instructions              #    1.82  insn per cycle           (38.41%)
+     2,713,456,237      branches                  #  976.935 M/sec                    (38.44%)
+         2,765,708      branch-misses             #    0.10% of all branches          (38.48%)
+     5,422,044,551      L1-dcache-loads           # 1952.117 M/sec                    (38.51%)
+     3,046,908,260      L1-dcache-load-misses     #   56.19% of all L1-dcache hits    (38.52%)
+       228,720,833      LLC-loads                 #   82.347 M/sec                    (30.82%)
+        13,516,079      LLC-load-misses           #    5.91% of all LL-cache hits     (30.82%)
+   <not supported>      L1-icache-loads                                             
+           838,728      L1-icache-load-misses                                         (30.81%)
+     5,426,410,904      dTLB-loads                # 1953.689 M/sec                    (30.77%)
+             2,001      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.74%)
+               440      iTLB-loads                #    0.158 K/sec                    (30.70%)
+                33      iTLB-load-misses          #    7.50% of all iTLB cache hits   (30.67%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.777782439 seconds time elapsed
+
+       2.762617000 seconds user
+       0.000991000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,837.90 msec task-clock                #    1.000 CPUs utilized          
+                28      context-switches          #    0.010 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               328      page-faults               #    0.116 K/sec                  
+    12,513,656,824      cycles                    #    4.409 GHz                      (30.75%)
+    21,679,956,360      instructions              #    1.73  insn per cycle           (38.47%)
+     2,712,738,579      branches                  #  955.897 M/sec                    (38.50%)
+         2,780,354      branch-misses             #    0.10% of all branches          (38.54%)
+     5,422,602,275      L1-dcache-loads           # 1910.780 M/sec                    (38.55%)
+     3,044,618,310      L1-dcache-load-misses     #   56.15% of all L1-dcache hits    (38.52%)
+       226,970,229      LLC-loads                 #   79.978 M/sec                    (30.77%)
+        19,747,846      LLC-load-misses           #    8.70% of all LL-cache hits     (30.74%)
+   <not supported>      L1-icache-loads                                             
+           862,787      L1-icache-load-misses                                         (30.73%)
+     5,423,894,133      dTLB-loads                # 1911.235 M/sec                    (30.72%)
+               270      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.73%)
+             3,453      iTLB-loads                #    0.001 M/sec                    (30.72%)
+                49      iTLB-load-misses          #    1.42% of all iTLB cache hits   (30.72%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.838350836 seconds time elapsed
+
+       2.820318000 seconds user
+       0.002983000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,915.13 msec task-clock                #    1.000 CPUs utilized          
+                 3      context-switches          #    0.001 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               328      page-faults               #    0.113 K/sec                  
+    12,902,336,632      cycles                    #    4.426 GHz                      (30.75%)
+    21,684,198,838      instructions              #    1.68  insn per cycle           (38.47%)
+     2,716,007,373      branches                  #  931.693 M/sec                    (38.50%)
+         2,786,501      branch-misses             #    0.10% of all branches          (38.53%)
+     5,422,971,113      L1-dcache-loads           # 1860.284 M/sec                    (38.53%)
+     3,044,705,455      L1-dcache-load-misses     #   56.14% of all L1-dcache hits    (38.52%)
+       229,987,990      LLC-loads                 #   78.895 M/sec                    (30.76%)
+        33,907,300      LLC-load-misses           #   14.74% of all LL-cache hits     (30.74%)
+   <not supported>      L1-icache-loads                                             
+           870,209      L1-icache-load-misses                                         (30.74%)
+     5,422,354,065      dTLB-loads                # 1860.072 M/sec                    (30.74%)
+               332      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.74%)
+             2,492      iTLB-loads                #    0.855 K/sec                    (30.74%)
+                85      iTLB-load-misses          #    3.41% of all iTLB cache hits   (30.74%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.915406031 seconds time elapsed
+
+       2.896518000 seconds user
+       0.003782000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,749.47 msec task-clock                #    1.000 CPUs utilized          
+                 5      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               332      page-faults               #    0.121 K/sec                  
+    11,897,444,302      cycles                    #    4.327 GHz                      (30.73%)
+    21,668,255,168      instructions              #    1.82  insn per cycle           (38.44%)
+     2,713,299,039      branches                  #  986.846 M/sec                    (38.47%)
+         2,773,619      branch-misses             #    0.10% of all branches          (38.51%)
+     5,422,222,015      L1-dcache-loads           # 1972.101 M/sec                    (38.54%)
+     3,047,120,561      L1-dcache-load-misses     #   56.20% of all L1-dcache hits    (38.55%)
+       228,553,203      LLC-loads                 #   83.126 M/sec                    (30.83%)
+        13,465,691      LLC-load-misses           #    5.89% of all LL-cache hits     (30.80%)
+   <not supported>      L1-icache-loads                                             
+           885,726      L1-icache-load-misses                                         (30.76%)
+     5,424,433,782      dTLB-loads                # 1972.905 M/sec                    (30.72%)
+               339      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.70%)
+             1,368      iTLB-loads                #    0.498 K/sec                    (30.70%)
+                26      iTLB-load-misses          #    1.90% of all iTLB cache hits   (30.70%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.749749809 seconds time elapsed
+
+       2.732230000 seconds user
+       0.003977000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,751.56 msec task-clock                #    1.000 CPUs utilized          
+                34      context-switches          #    0.012 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               330      page-faults               #    0.120 K/sec                  
+    11,898,656,220      cycles                    #    4.324 GHz                      (30.70%)
+    21,663,371,015      instructions              #    1.82  insn per cycle           (38.41%)
+     2,711,987,269      branches                  #  985.617 M/sec                    (38.44%)
+         2,773,247      branch-misses             #    0.10% of all branches          (38.47%)
+     5,418,454,467      L1-dcache-loads           # 1969.228 M/sec                    (38.51%)
+     3,045,271,459      L1-dcache-load-misses     #   56.20% of all L1-dcache hits    (38.51%)
+       226,418,138      LLC-loads                 #   82.287 M/sec                    (30.82%)
+        13,653,909      LLC-load-misses           #    6.03% of all LL-cache hits     (30.82%)
+   <not supported>      L1-icache-loads                                             
+           901,880      L1-icache-load-misses                                         (30.82%)
+     5,428,072,229      dTLB-loads                # 1972.723 M/sec                    (30.78%)
+             2,085      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.75%)
+             1,807      iTLB-loads                #    0.657 K/sec                    (30.71%)
+                23      iTLB-load-misses          #    1.27% of all iTLB cache hits   (30.67%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.752025729 seconds time elapsed
+
+       2.734936000 seconds user
+       0.002984000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,748.81 msec task-clock                #    1.000 CPUs utilized          
+                27      context-switches          #    0.010 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               325      page-faults               #    0.118 K/sec                  
+    11,898,085,339      cycles                    #    4.328 GHz                      (30.71%)
+    21,669,390,715      instructions              #    1.82  insn per cycle           (38.43%)
+     2,714,112,904      branches                  #  987.377 M/sec                    (38.46%)
+         2,777,146      branch-misses             #    0.10% of all branches          (38.50%)
+     5,423,643,604      L1-dcache-loads           # 1973.088 M/sec                    (38.53%)
+     3,046,220,061      L1-dcache-load-misses     #   56.17% of all L1-dcache hits    (38.56%)
+       226,310,046      LLC-loads                 #   82.330 M/sec                    (30.84%)
+        13,761,239      LLC-load-misses           #    6.08% of all LL-cache hits     (30.80%)
+   <not supported>      L1-icache-loads                                             
+           894,645      L1-icache-load-misses                                         (30.76%)
+     5,423,202,203      dTLB-loads                # 1972.927 M/sec                    (30.73%)
+               235      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.70%)
+             2,703      iTLB-loads                #    0.983 K/sec                    (30.70%)
+                49      iTLB-load-misses          #    1.81% of all iTLB cache hits   (30.70%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.749248267 seconds time elapsed
+
+       2.731433000 seconds user
+       0.002984000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,753.77 msec task-clock                #    1.000 CPUs utilized          
+                27      context-switches          #    0.010 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               334      page-faults               #    0.121 K/sec                  
+    11,940,593,455      cycles                    #    4.336 GHz                      (30.72%)
+    21,650,793,453      instructions              #    1.81  insn per cycle           (38.42%)
+     2,711,403,440      branches                  #  984.615 M/sec                    (38.41%)
+         2,769,972      branch-misses             #    0.10% of all branches          (38.43%)
+     5,420,838,366      L1-dcache-loads           # 1968.515 M/sec                    (38.46%)
+     3,045,987,711      L1-dcache-load-misses     #   56.19% of all L1-dcache hits    (38.49%)
+       226,473,978      LLC-loads                 #   82.241 M/sec                    (30.79%)
+        13,870,922      LLC-load-misses           #    6.12% of all LL-cache hits     (30.79%)
+   <not supported>      L1-icache-loads                                             
+           815,623      L1-icache-load-misses                                         (30.79%)
+     5,427,637,600      dTLB-loads                # 1970.985 M/sec                    (30.79%)
+               279      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.79%)
+             3,181      iTLB-loads                #    0.001 M/sec                    (30.78%)
+             1,356      iTLB-load-misses          #   42.63% of all iTLB cache hits   (30.74%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.754232204 seconds time elapsed
+
+       2.734453000 seconds user
+       0.004783000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,744.69 msec task-clock                #    1.000 CPUs utilized          
+                 6      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               332      page-faults               #    0.121 K/sec                  
+    11,871,210,783      cycles                    #    4.325 GHz                      (30.77%)
+    21,684,955,512      instructions              #    1.83  insn per cycle           (38.50%)
+     2,716,079,927      branches                  #  989.575 M/sec                    (38.50%)
+         2,789,172      branch-misses             #    0.10% of all branches          (38.50%)
+     5,422,437,037      L1-dcache-loads           # 1975.607 M/sec                    (38.50%)
+     3,044,037,202      L1-dcache-load-misses     #   56.14% of all L1-dcache hits    (38.48%)
+       229,152,454      LLC-loads                 #   83.489 M/sec                    (30.75%)
+        14,231,768      LLC-load-misses           #    6.21% of all LL-cache hits     (30.75%)
+   <not supported>      L1-icache-loads                                             
+           793,123      L1-icache-load-misses                                         (30.75%)
+     5,422,433,645      dTLB-loads                # 1975.606 M/sec                    (30.75%)
+               413      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.75%)
+               904      iTLB-loads                #    0.329 K/sec                    (30.75%)
+                20      iTLB-load-misses          #    2.21% of all iTLB cache hits   (30.75%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.744955237 seconds time elapsed
+
+       2.721780000 seconds user
+       0.008728000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,739.21 msec task-clock                #    1.000 CPUs utilized          
+                 8      context-switches          #    0.003 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               330      page-faults               #    0.120 K/sec                  
+    11,903,780,597      cycles                    #    4.346 GHz                      (30.68%)
+    21,670,720,722      instructions              #    1.82  insn per cycle           (38.39%)
+     2,713,411,527      branches                  #  990.583 M/sec                    (38.42%)
+         2,773,813      branch-misses             #    0.10% of all branches          (38.46%)
+     5,421,900,557      L1-dcache-loads           # 1979.370 M/sec                    (38.49%)
+     3,045,323,448      L1-dcache-load-misses     #   56.17% of all L1-dcache hits    (38.51%)
+       229,181,351      LLC-loads                 #   83.667 M/sec                    (30.81%)
+        13,912,588      LLC-load-misses           #    6.07% of all LL-cache hits     (30.81%)
+   <not supported>      L1-icache-loads                                             
+           891,407      L1-icache-load-misses                                         (30.81%)
+     5,424,567,298      dTLB-loads                # 1980.343 M/sec                    (30.80%)
+             2,233      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.77%)
+             1,285      iTLB-loads                #    0.469 K/sec                    (30.73%)
+             1,274      iTLB-load-misses          #   99.14% of all iTLB cache hits   (30.70%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.739500002 seconds time elapsed
+
+       2.719601000 seconds user
+       0.005361000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,773.05 msec task-clock                #    1.000 CPUs utilized          
+                 6      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               325      page-faults               #    0.117 K/sec                  
+    11,955,485,168      cycles                    #    4.311 GHz                      (30.73%)
+    21,682,733,051      instructions              #    1.81  insn per cycle           (38.46%)
+     2,716,868,152      branches                  #  979.739 M/sec                    (38.49%)
+         2,777,403      branch-misses             #    0.10% of all branches          (38.52%)
+     5,427,722,688      L1-dcache-loads           # 1957.310 M/sec                    (38.55%)
+     3,047,033,838      L1-dcache-load-misses     #   56.14% of all L1-dcache hits    (38.54%)
+       228,459,594      LLC-loads                 #   82.386 M/sec                    (30.79%)
+        14,128,716      LLC-load-misses           #    6.18% of all LL-cache hits     (30.75%)
+   <not supported>      L1-icache-loads                                             
+           880,068      L1-icache-load-misses                                         (30.72%)
+     5,416,294,992      dTLB-loads                # 1953.189 M/sec                    (30.72%)
+               199      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.72%)
+             1,064      iTLB-loads                #    0.384 K/sec                    (30.72%)
+                49      iTLB-load-misses          #    4.61% of all iTLB cache hits   (30.72%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.773312076 seconds time elapsed
+
+       2.755175000 seconds user
+       0.003981000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,687.64 msec task-clock                #    1.000 CPUs utilized          
+                52      context-switches          #    0.019 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               328      page-faults               #    0.122 K/sec                  
+    11,947,062,170      cycles                    #    4.445 GHz                      (30.66%)
+    21,700,090,439      instructions              #    1.82  insn per cycle           (38.36%)
+     2,716,966,284      branches                  # 1010.910 M/sec                    (38.43%)
+         2,777,399      branch-misses             #    0.10% of all branches          (38.47%)
+     5,425,911,948      L1-dcache-loads           # 2018.837 M/sec                    (38.51%)
+     3,043,200,477      L1-dcache-load-misses     #   56.09% of all L1-dcache hits    (38.54%)
+       226,300,434      LLC-loads                 #   84.200 M/sec                    (30.80%)
+        14,957,501      LLC-load-misses           #    6.61% of all LL-cache hits     (30.80%)
+   <not supported>      L1-icache-loads                                             
+           914,234      L1-icache-load-misses                                         (30.80%)
+     5,416,249,782      dTLB-loads                # 2015.241 M/sec                    (30.80%)
+             2,009      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.76%)
+             4,374      iTLB-loads                #    0.002 M/sec                    (30.73%)
+             1,437      iTLB-load-misses          #   32.85% of all iTLB cache hits   (30.69%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.688271716 seconds time elapsed
+
+       2.668731000 seconds user
+       0.004804000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,756.39 msec task-clock                #    1.000 CPUs utilized          
+                 5      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               330      page-faults               #    0.120 K/sec                  
+    11,905,709,859      cycles                    #    4.319 GHz                      (30.74%)
+    21,682,891,112      instructions              #    1.82  insn per cycle           (38.44%)
+     2,715,063,446      branches                  #  985.006 M/sec                    (38.47%)
+         2,792,693      branch-misses             #    0.10% of all branches          (38.47%)
+     5,419,026,812      L1-dcache-loads           # 1965.985 M/sec                    (38.47%)
+     3,040,837,850      L1-dcache-load-misses     #   56.11% of all L1-dcache hits    (38.49%)
+       225,756,387      LLC-loads                 #   81.903 M/sec                    (30.77%)
+        14,092,855      LLC-load-misses           #    6.24% of all LL-cache hits     (30.77%)
+   <not supported>      L1-icache-loads                                             
+           776,327      L1-icache-load-misses                                         (30.77%)
+     5,426,995,943      dTLB-loads                # 1968.877 M/sec                    (30.76%)
+               403      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.77%)
+             1,892      iTLB-loads                #    0.686 K/sec                    (30.76%)
+               315      iTLB-load-misses          #   16.65% of all iTLB cache hits   (30.77%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.756650769 seconds time elapsed
+
+       2.734061000 seconds user
+       0.007764000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,711.09 msec task-clock                #    1.000 CPUs utilized          
+                 9      context-switches          #    0.003 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               328      page-faults               #    0.121 K/sec                  
+    11,922,534,914      cycles                    #    4.398 GHz                      (30.69%)
+    21,674,802,191      instructions              #    1.82  insn per cycle           (38.41%)
+     2,712,839,075      branches                  # 1000.644 M/sec                    (38.44%)
+         2,773,630      branch-misses             #    0.10% of all branches          (38.47%)
+     5,419,595,783      L1-dcache-loads           # 1999.044 M/sec                    (38.51%)
+     3,042,659,490      L1-dcache-load-misses     #   56.14% of all L1-dcache hits    (38.55%)
+       228,970,325      LLC-loads                 #   84.457 M/sec                    (30.84%)
+        13,900,839      LLC-load-misses           #    6.07% of all LL-cache hits     (30.84%)
+   <not supported>      L1-icache-loads                                             
+           964,972      L1-icache-load-misses                                         (30.80%)
+     5,422,984,281      dTLB-loads                # 2000.294 M/sec                    (30.76%)
+             2,028      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.73%)
+             1,838      iTLB-loads                #    0.678 K/sec                    (30.69%)
+                49      iTLB-load-misses          #    2.67% of all iTLB cache hits   (30.69%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.711445534 seconds time elapsed
+
+       2.691555000 seconds user
+       0.005766000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,775.17 msec task-clock                #    1.000 CPUs utilized          
+                60      context-switches          #    0.022 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               333      page-faults               #    0.120 K/sec                  
+    11,888,024,966      cycles                    #    4.284 GHz                      (30.70%)
+    21,679,782,570      instructions              #    1.82  insn per cycle           (38.42%)
+     2,715,042,120      branches                  #  978.333 M/sec                    (38.48%)
+         2,784,539      branch-misses             #    0.10% of all branches          (38.52%)
+     5,421,945,692      L1-dcache-loads           # 1953.734 M/sec                    (38.55%)
+     3,043,598,110      L1-dcache-load-misses     #   56.13% of all L1-dcache hits    (38.58%)
+       226,370,730      LLC-loads                 #   81.570 M/sec                    (30.82%)
+        13,869,009      LLC-load-misses           #    6.13% of all LL-cache hits     (30.79%)
+   <not supported>      L1-icache-loads                                             
+           968,869      L1-icache-load-misses                                         (30.75%)
+     5,422,698,012      dTLB-loads                # 1954.005 M/sec                    (30.71%)
+               394      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.70%)
+               769      iTLB-loads                #    0.277 K/sec                    (30.70%)
+               153      iTLB-load-misses          #   19.90% of all iTLB cache hits   (30.70%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.775792594 seconds time elapsed
+
+       2.759277000 seconds user
+       0.001994000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,722.89 msec task-clock                #    1.000 CPUs utilized          
+                 7      context-switches          #    0.003 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               329      page-faults               #    0.121 K/sec                  
+    11,904,307,273      cycles                    #    4.372 GHz                      (30.71%)
+    21,671,651,735      instructions              #    1.82  insn per cycle           (38.42%)
+     2,712,750,429      branches                  #  996.275 M/sec                    (38.45%)
+         2,768,345      branch-misses             #    0.10% of all branches          (38.49%)
+     5,419,471,019      L1-dcache-loads           # 1990.335 M/sec                    (38.53%)
+     3,043,790,118      L1-dcache-load-misses     #   56.16% of all L1-dcache hits    (38.56%)
+       228,776,327      LLC-loads                 #   84.020 M/sec                    (30.84%)
+        13,828,960      LLC-load-misses           #    6.04% of all LL-cache hits     (30.81%)
+   <not supported>      L1-icache-loads                                             
+           773,746      L1-icache-load-misses                                         (30.77%)
+     5,423,264,996      dTLB-loads                # 1991.729 M/sec                    (30.73%)
+               436      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.70%)
+             1,361      iTLB-loads                #    0.500 K/sec                    (30.70%)
+               681      iTLB-load-misses          #   50.04% of all iTLB cache hits   (30.70%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.723203144 seconds time elapsed
+
+       2.704427000 seconds user
+       0.004976000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,776.72 msec task-clock                #    1.000 CPUs utilized          
+                 5      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               324      page-faults               #    0.117 K/sec                  
+    11,893,735,352      cycles                    #    4.283 GHz                      (30.71%)
+    21,674,952,182      instructions              #    1.82  insn per cycle           (38.42%)
+     2,714,572,834      branches                  #  977.617 M/sec                    (38.45%)
+         2,777,266      branch-misses             #    0.10% of all branches          (38.48%)
+     5,422,900,629      L1-dcache-loads           # 1952.986 M/sec                    (38.52%)
+     3,046,441,952      L1-dcache-load-misses     #   56.18% of all L1-dcache hits    (38.53%)
+       226,150,836      LLC-loads                 #   81.445 M/sec                    (30.83%)
+        13,792,153      LLC-load-misses           #    6.10% of all LL-cache hits     (30.83%)
+   <not supported>      L1-icache-loads                                             
+           871,227      L1-icache-load-misses                                         (30.80%)
+     5,424,160,780      dTLB-loads                # 1953.440 M/sec                    (30.76%)
+             2,138      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.73%)
+               573      iTLB-loads                #    0.206 K/sec                    (30.69%)
+                78      iTLB-load-misses          #   13.61% of all iTLB cache hits   (30.68%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.776962824 seconds time elapsed
+
+       2.755650000 seconds user
+       0.005968000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,764.03 msec task-clock                #    1.000 CPUs utilized          
+                 8      context-switches          #    0.003 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               328      page-faults               #    0.119 K/sec                  
+    11,877,888,046      cycles                    #    4.297 GHz                      (30.71%)
+    21,675,719,853      instructions              #    1.82  insn per cycle           (38.41%)
+     2,714,080,172      branches                  #  981.929 M/sec                    (38.44%)
+         2,768,211      branch-misses             #    0.10% of all branches          (38.48%)
+     5,421,706,368      L1-dcache-loads           # 1961.522 M/sec                    (38.52%)
+     3,045,131,501      L1-dcache-load-misses     #   56.17% of all L1-dcache hits    (38.53%)
+       229,129,514      LLC-loads                 #   82.897 M/sec                    (30.82%)
+        14,161,594      LLC-load-misses           #    6.18% of all LL-cache hits     (30.82%)
+   <not supported>      L1-icache-loads                                             
+           889,902      L1-icache-load-misses                                         (30.80%)
+     5,424,381,599      dTLB-loads                # 1962.490 M/sec                    (30.77%)
+             2,268      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.73%)
+               766      iTLB-loads                #    0.277 K/sec                    (30.70%)
+                68      iTLB-load-misses          #    8.88% of all iTLB cache hits   (30.68%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.764307380 seconds time elapsed
+
+       2.747089000 seconds user
+       0.002985000 seconds sys
+
+
+
+ Performance counter stats for './wrapper-comerge.sh /mnt/pmem0/ 5368709120 ./polybench-c-4.2.1-beta/compiled_polybench_tests/3mm_time polybench-c-4.2.1-beta/compiled_polybench_tests/results/3mmpmem2mb.log':
+
+          2,774.38 msec task-clock                #    1.000 CPUs utilized          
+                 4      context-switches          #    0.001 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               330      page-faults               #    0.119 K/sec                  
+    11,884,366,937      cycles                    #    4.284 GHz                      (30.76%)
+    21,688,415,697      instructions              #    1.82  insn per cycle           (38.48%)
+     2,715,268,508      branches                  #  978.694 M/sec                    (38.51%)
+         2,783,185      branch-misses             #    0.10% of all branches          (38.55%)
+     5,422,347,072      L1-dcache-loads           # 1954.436 M/sec                    (38.58%)
+     3,045,164,923      L1-dcache-load-misses     #   56.16% of all L1-dcache hits    (38.53%)
+       225,941,176      LLC-loads                 #   81.438 M/sec                    (30.78%)
+        13,996,720      LLC-load-misses           #    6.19% of all LL-cache hits     (30.74%)
+   <not supported>      L1-icache-loads                                             
+           773,472      L1-icache-load-misses                                         (30.71%)
+     5,421,126,301      dTLB-loads                # 1953.996 M/sec                    (30.71%)
+               453      dTLB-load-misses          #    0.00% of all dTLB cache hits   (30.71%)
+               599      iTLB-loads                #    0.216 K/sec                    (30.71%)
+               173      iTLB-load-misses          #   28.88% of all iTLB cache hits   (30.71%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       2.774642300 seconds time elapsed
+
+       2.756688000 seconds user
+       0.003776000 seconds sys

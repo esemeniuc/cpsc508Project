@@ -1,0 +1,16 @@
+SUMMARY -- STATS FOR polybench/results/3mm_dram_4kb.txt:
+context-switches: 4.35 (+/-) 1.71
+cpu-migrations: 0.0 (+/-) 0.0
+page-faults: 21321.1 (+/-) 1.41
+cycles: 12546619211.1 (+/-) 581291500.6
+instructions: 21767032579.05 (+/-) 14563547.61
+branches: 2725403419.7 (+/-) 2722644918.55
+L1-dcache-loads: 5423040322.15 (+/-) 4167871.46
+L1-d-cache-load-misses: 3190014846.8 (+/-) 27330575.19
+LCC-loads: 260114761.8 (+/-) 8926930.01
+LLC-load-misses: 6185368.0 (+/-) 2664884.96
+L1-icache-load-misses: 2644809.1 (+/-) 140532.34
+dTLB-loads: 5428436632.25 (+/-) 4427245.93
+dTLB-load-misses: 223996593.2 (+/-) 47133427.24
+iTLB-loads: 363.4 (+/-) 338.08
+iTLB-load-misses: 11484.25 (+/-) 1307.67

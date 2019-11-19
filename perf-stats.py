@@ -35,6 +35,8 @@ with open(filename, "r") as f:
     for line in f:
         if "stats" in line:
             num_samples += 1
+        elif "DTLBWALKS" in line:
+            add_to_dict("DTLBWALKS", line, stat_map)
         elif "context-switches" in line:
             add_to_dict("context-switches", line, stat_map)
         elif "cpu-migrations" in line:
@@ -77,6 +79,8 @@ with open(filename, "r") as f:
     for line in f:
         if "context-switches" in line:
             add_sd_to_dict("context-switches", line, stat_map, stdev_map)
+        elif "DTLBWALKS" in line:
+            add_to_dict("DTLBWALKS", line, stat_map, stdev_map)
         elif "cpu-migrations" in line:
             add_sd_to_dict("cpu-migrations", line, stat_map, stdev_map)
         elif "page-faults" in line:
