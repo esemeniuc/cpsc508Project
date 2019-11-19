@@ -71,9 +71,9 @@ When in the PMEM kernel, simply run ```sudo shutdown -r now``` to boot back into
 Lastly, create and mount a DAX filesystem: <br>
 
 ```
-mkdir /mnt/pmemdir
-mkfs.ext4 /dev/pmem0
-mount -o dax /dev/pmem0 /mnt/pmemdir
+sudo mkdir /mnt/pmem0
+sudo mkfs.ext4 -b 4096 -E stride=262144 -F /dev/pmem0
+sudo mount -o dax /dev/pmem0 /mnt/pmem0/
 ```
 
 To run stuff on the emulated NVM, <br>
