@@ -15,7 +15,7 @@ To get hugetlbfs on Ubuntu, run:
 
 ```
 sudo apt-get update
-sudo apt-get install libhugetlbfs-dev
+sudo apt-get install libhugetlbfs-dev hugepages
 ```
 
 To check total number of huge pages: ```grep HugePages_Total /proc/meminfo``` <br>
