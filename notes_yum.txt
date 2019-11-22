@@ -1,0 +1,21 @@
+sudo dnf install rpmdevtools
+wget https://kojipkgs.fedoraproject.org//packages/kernel/5.3.11/300.fc31/src/kernel-5.3.11-300.fc31.src.rpm
+
+cd ~ && rpmdev-setuptree
+rpm -Uvh kernel-5.3.11-300.fc31.src.rpm
+#ignore the mockbuild warnings
+
+sudo dnf install -y fedpkg fedora-packager rpmdevtools ncurses-devel pesign
+
+sudo dnf install -y @development-tools elfutils-devel gcc-plugin-devel perl-devel perl-generators python3-devel flex m4 openssl-devel bison ccache
+fedpkg clone -a kernel && cd kernel
+git checkout origin/f31
+sed -i 's/# define buildid .local/%define buildid .local/' kernel.spec
+
+git checkout -b undergrads
+#git add .
+#git commit -m 'kspec update'
+git branch -u origin/f31
+fedpkg local
+cd ~/kernel/x86_64/
+sudo dnf install --nogpgcheck kernel-5.3.12-300.local.fc31.x86_64.rpm kernel-core-5.3.12-300.local.fc31.x86_64.rpm kernel-modules-5.3.12-300.local.fc31.x86_64.rpm
