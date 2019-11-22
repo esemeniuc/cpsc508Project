@@ -10,3 +10,6 @@ git branch -u origin/f31
 fedpkg local
 cd ~/kernel/x86_64/
 sudo dnf install --nogpgcheck kernel-5.3.12-300.local.fc31.x86_64.rpm kernel-core-5.3.12-300.local.fc31.x86_64.rpm kernel-modules-5.3.12-300.local.fc31.x86_64.rpm
+
+#if already updated
+sudo dnf reinstall --nogpgcheck kernel-5.3.12-300.local.fc31.x86_64.rpm kernel-core-5.3.12-300.local.fc31.x86_64.rpm kernel-modules-5.3.12-300.local.fc31.x86_64.rpm
