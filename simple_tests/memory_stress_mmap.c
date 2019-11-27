@@ -26,11 +26,10 @@ int main(int argc, char **argv)
 		allocate = ((long) input) * (1024*1024*1024) / sizeof (long); 
 	}
 	printf("attempting to allocate %ld bytes\n...  then will randomly write for ~5 seconds\n\n", allocate * sizeof(long));
-	//int fd = open("/dev/dax0.0", O_RDONLY);
 	int fd = open("/dev/dax0.0", O_RDWR);
 	if(fd == -1){printf("failed to open devdax\n"); exit(1);};
 	//long *arr = mmap(NULL, allocate, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-	long *arr = mmap(NULL, 19327352832, 3, MAP_SHARED, fd, 0);//x140000000);
+	long *arr = mmap(NULL, 19327352832, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);//x140000000);
 	if(arr == MAP_FAILED){
 		printf("mmap failed\n");
 		exit(1);
