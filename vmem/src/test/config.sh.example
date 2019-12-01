@@ -1,0 +1,25 @@
+#
+# src/test/config.sh.example -- example of configuration file for a single unit
+#	test (real config file for the 'unit_test' should have the following
+#	path: src/test/<unit_test>/config.sh)
+#
+
+
+# GLOBAL REQUIREMENTS
+
+# Global requirements are applied for all TEST<num> scripts in the sub-directory
+# where config.sh file is located.
+
+# Tests can require a specific build types:
+	CONF_GLOBAL_BUILD_TYPE=debug
+
+# Test can also require custom timeout:
+	CONF_GLOBAL_TIMEOUT=5m
+
+
+# PER TEST<num> REQUIREMENTS
+
+# Per TEST<num> requirements are applied only for single TEST<num> script.
+
+# The same for any other global requirements:
+#	CONF_BUILD_TYPE[<num>]="debug nondebug"

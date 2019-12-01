@@ -1,0 +1,9 @@
+out_err_mt$(nW)TEST2: START: out_err_mt$(nW)
+ $(nW)out_err_mt$(nW) $(nW)
+start
+VMEM: 
+version check
+VMEM: libvmem major version mismatch (need 10005, found $(N))
+vmem_create_in_region
+VMEM: size 1 smaller than $(N)
+out_err_mt$(nW)TEST2: DONE

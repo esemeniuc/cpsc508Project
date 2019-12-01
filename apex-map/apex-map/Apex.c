@@ -31,7 +31,7 @@ double kavg;
 int kflops, kmain, kindex, kdest;
 int myid, nprocs;
 long long int M, MM;
-long long int dMem[] = {67108864};
+long long int dMem[] = {2684354560};
 double *data0;
 double timeoverhead = 0.0;
 double avg, sum2 = 0.0, flops = 0.0; 
@@ -44,8 +44,8 @@ int initData(double *);
 double test();
 double gettimeoverhead();
 
-int sLocality[] = {1,4,16,64,256,1024,4096,16384,65536};
-double tLocality[] = {1.0000,0.5000,0.2500,0.1000,0.0500,0.0250,0.0100,0.0050,0.0025,0.0010};
+int sLocality[] = {1,4,16,64,256,1024,4096,16384,65536,262144,1048576,4194304,16777216,67108864};
+double tLocality[] = {0.0001};
 long long int *ind;
 
 int main(int argc, char *argv[]) {
@@ -59,15 +59,15 @@ int main(int argc, char *argv[]) {
 
   CLOCK(gtime1);
   N = 100;
-  MM = 67108864, M = 67108864 / 1;
+  MM = 2684354560, M = 2684354560 / 1;
   data0 = (double *) MALLOC((M+0) * sizeof(double));
   if (data0 == NULL) { 
     printf("can not allcoate memory for data!\n");
      exit(1);
   }
   data0 = &data0[0];
-  tmp = (long long int) 1024 * 65536;
-  MAXNCL = MAX(MAXNCL, 65536);
+  tmp = (long long int) 1024 * 67108864;
+  MAXNCL = MAX(MAXNCL, 67108864);
   B = 1024; 
   ind = (long long int *) MALLOC(B * sizeof(long long int));
   if (ind == NULL) { 
@@ -87,11 +87,11 @@ int main(int argc, char *argv[]) {
   printf("Start Time : %s\n", ctime(&tval));
   printf("------------------------------------------------------\n\n");
 
-  for (i = 0; i < 9; i++) {
+  for (i = 0; i < 14; i++) {
     L = sLocality[i];
     tmp = (long long int) I * L;
     B = MIN(MAXNCL, tmp); 
-    for (j = 0; j < 10; j++) { 
+    for (j = 0; j < 1; j++) { 
       K = tLocality[j];
       ret = test();
       avg *= ccc; 

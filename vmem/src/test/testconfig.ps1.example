@@ -1,0 +1,49 @@
+#
+# src/test/testconfig.ps1 -- configuration for local and remote unit tests
+#
+
+#
+# 1) *** LOCAL CONFIGURATION ***
+#
+# The first part of the file tells the script unittest/unittest.ps1
+# which file system locations are to be used for local testing.
+#
+
+#
+# Appended to TEST_DIR to test PMDK with file path longer than 255
+# characters.  Due to limitation of powershell you have to use UNC prefix
+# (i.e.  \\?\c:\tmp) in PMEM_FS_DIR and NON_PMEM_FS_DIR variables.
+#
+# $Local:LONGDIR = "PhngluimglwnafhCthulhuRlyehwgahnaglfhtagnHaizhronaDagonhaiepngmnahnhriikadishtugnaiihcuhesyhahfgnaiihsgnwahlnogsgnwahlnghahaiChaugnarFaugnhlirghHshtungglingnogRlyehnghaogShub-NiggurathothhgofnnlloigshuggsllhannnCthulhuahnyth"
+#$Env:DIRSUFFIX = "$LONGDIR\$LONGDIR\$LONGDIR\$LONGDIR\$LONGDIR"
+
+#
+# Directory for scratch files during tests.
+#
+#$Env:TEST_DIR = "\temp"
+
+#
+# Overwrite available build types:
+# debug, nondebug, static-debug, static-nondebug, all (default)
+#
+#$Env:TEST_BUILD = "all"
+
+#
+# Overwrite default timeout
+# (floating point number with an optional suffix: 's' for seconds (the default),
+# 'm' for minutes, 'h' for hours or 'd' for days)
+#
+#$Env:TEST_TIMEOUT = "60s"
+
+#
+# To display execution time of each test
+#
+$Env:TM = "1"
+
+#
+# Test against installed libraries, NOT the one built in tree.
+# Note that these variable won't affect tests that link statically. You should
+# disabled them using TEST_BUILD variable.
+#
+# $Env:VMEM_LIB_PATH_NONDEBUG = "C:\vcpkg\buildtrees\pmdk\src\1.4.1-0ecc9f7f1f\src\x64\Release"
+# $Env:VMEM_LIB_PATH_DEBUG = "C:\vcpkg\buildtrees\pmdk\src\1.4.1-0ecc9f7f1f\src\x64\Debug"

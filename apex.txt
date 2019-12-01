@@ -1,0 +1,116 @@
+VMMALLOC_POOL_DIR=/dev/dax0.0 VMMALLOC_POOL_SIZE=30064771072 LD_PRELOAD=/home/cs508/cpsc508Project/vmem/src/debug/libvmmalloc.so ./apex-map/apex-map/a.out
+Each call of the time function takes min 0.000000000 seconds = 0.000000 cycles
+Each call of the time function takes max 0.000001000 seconds = 2600.000000 cycles
+Total 0.000014000, Average access time is 0.000000014 seconds for 1000 times
+
+Apex-Map SEQUENTIAL Test, Version 3.0 
+Platform : TESTPLATFORM, CPU Frequency : 2600.0(MHZ)
+Memory Size is 2684354560 (Words), Register Pressure: 1 
+Repeat Times 100, Warmup Times 10, Computational Intensity: 1 
+Computational Kernel: NESTED loop, Implementation: SCALAR , Index Length: 1024
+Start Time : Fri Nov 29 18:13:59 2019
+
+------------------------------------------------------
+
+K=0.0001, L=1, B=1024, ret = 0.085619
+kernel: time(us), flops, access to data, index, destination: 2.476, 2048, 1024, 1024, 0
+the average flops is 827.141(Mflops)
+the average access time is 2.418(ns) with deviation 0.613 ns
+the average access time is 6.287(cycles) with deviation 1.593 cylces, average bandwidth is 3308.562(MB)/s
+
+
+K=0.0001, L=4, B=4096, ret = 0.477967
+kernel: time(us), flops, access to data, index, destination: 8.466, 8192, 4096, 1024, 0
+the average flops is 967.635(Mflops)
+the average access time is 2.067(ns) with deviation 0.456 ns
+the average access time is 5.374(cycles) with deviation 1.185 cylces, average bandwidth is 3870.541(MB)/s
+
+
+K=0.0001, L=16, B=16384, ret = 1.346807
+kernel: time(us), flops, access to data, index, destination: 32.976, 32768, 16384, 1024, 0
+the average flops is 993.692(Mflops)
+the average access time is 2.013(ns) with deviation 0.176 ns
+the average access time is 5.233(cycles) with deviation 0.456 cylces, average bandwidth is 3974.770(MB)/s
+
+
+K=0.0001, L=64, B=65536, ret = 8.098100
+kernel: time(us), flops, access to data, index, destination: 129.606, 131072, 65536, 1024, 0
+the average flops is 1011.311(Mflops)
+the average access time is 1.978(ns) with deviation 0.029 ns
+the average access time is 5.142(cycles) with deviation 0.075 cylces, average bandwidth is 4045.245(MB)/s
+
+
+K=0.0001, L=256, B=262144, ret = 37.156816
+kernel: time(us), flops, access to data, index, destination: 521.406, 524288, 262144, 1024, 0
+the average flops is 1005.527(Mflops)
+the average access time is 1.989(ns) with deviation 0.029 ns
+the average access time is 5.171(cycles) with deviation 0.075 cylces, average bandwidth is 4022.109(MB)/s
+
+
+K=0.0001, L=1024, B=1048576, ret = 118.205078
+kernel: time(us), flops, access to data, index, destination: 2086.276, 2097152, 1048576, 1024, 0
+the average flops is 1005.213(Mflops)
+the average access time is 1.990(ns) with deviation 0.034 ns
+the average access time is 5.173(cycles) with deviation 0.090 cylces, average bandwidth is 4020.852(MB)/s
+
+
+K=0.0001, L=4096, B=4194304, ret = 344.588078
+kernel: time(us), flops, access to data, index, destination: 8319.976, 8388608, 4194304, 1024, 0
+the average flops is 1008.249(Mflops)
+the average access time is 1.984(ns) with deviation 0.022 ns
+the average access time is 5.157(cycles) with deviation 0.056 cylces, average bandwidth is 4032.996(MB)/s
+
+
+K=0.0001, L=16384, B=16777216, ret = 1786.107563
+kernel: time(us), flops, access to data, index, destination: 33215.126, 33554432, 16777216, 1024, 0
+the average flops is 1010.215(Mflops)
+the average access time is 1.980(ns) with deviation 0.011 ns
+the average access time is 5.147(cycles) with deviation 0.027 cylces, average bandwidth is 4040.862(MB)/s
+
+
+K=0.0001, L=65536, B=67108864, ret = 10391.682250
+kernel: time(us), flops, access to data, index, destination: 133025.376, 134217728, 67108864, 1024, 0
+the average flops is 1008.963(Mflops)
+the average access time is 1.982(ns) with deviation 0.014 ns
+the average access time is 5.154(cycles) with deviation 0.035 cylces, average bandwidth is 4035.853(MB)/s
+
+
+K=0.0001, L=262144, B=67108864, ret = 13388.786250
+kernel: time(us), flops, access to data, index, destination: 132957.996, 134217728, 67108864, 256, 0
+the average flops is 1009.475(Mflops)
+the average access time is 1.981(ns) with deviation 0.005 ns
+the average access time is 5.151(cycles) with deviation 0.014 cylces, average bandwidth is 4037.899(MB)/s
+
+
+K=0.0001, L=1048576, B=67108864, ret = 29175.794250
+kernel: time(us), flops, access to data, index, destination: 133297.396, 134217728, 67108864, 64, 0
+the average flops is 1006.904(Mflops)
+the average access time is 1.986(ns) with deviation 0.006 ns
+the average access time is 5.164(cycles) with deviation 0.015 cylces, average bandwidth is 4027.617(MB)/s
+
+
+K=0.0001, L=4194304, B=67108864, ret = 58261.490250
+kernel: time(us), flops, access to data, index, destination: 134466.846, 134217728, 67108864, 16, 0
+the average flops is 998.147(Mflops)
+the average access time is 2.004(ns) with deviation 0.006 ns
+the average access time is 5.210(cycles) with deviation 0.014 cylces, average bandwidth is 3992.589(MB)/s
+
+
+K=0.0001, L=16777216, B=67108864, ret = 230686.706250
+kernel: time(us), flops, access to data, index, destination: 134535.566, 134217728, 67108864, 4, 0
+the average flops is 997.638(Mflops)
+the average access time is 2.005(ns) with deviation 0.005 ns
+the average access time is 5.212(cycles) with deviation 0.013 cylces, average bandwidth is 3990.550(MB)/s
+
+
+K=0.0001, L=67108864, B=67108864, ret = 922746.866250
+kernel: time(us), flops, access to data, index, destination: 134885.106, 134217728, 67108864, 1, 0
+the average flops is 995.052(Mflops)
+the average access time is 2.010(ns) with deviation 0.016 ns
+the average access time is 5.226(cycles) with deviation 0.043 cylces, average bandwidth is 3980.209(MB)/s
+
+
+-----------------------------------------------------
+Finished at : Fri Nov 29 18:15:33 2019
+
+Total execution time : 104.88 seconds

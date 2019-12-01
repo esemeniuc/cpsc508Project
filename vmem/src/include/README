@@ -1,0 +1,17 @@
+VMEM
+
+This is src/include/README.
+
+This directory contains include files that are meant to be installed on
+a system when vmem and vmmalloc libraries are installed.
+These include files provide the public information exported
+by the libraries that is necessary for applications to call into
+the libraries.  Private include files, used only internally in
+the libraries, don't live here -- they typically live next to
+the source for their module.
+
+Here you'll find:
+
+libvmem.h -- definitions of libvmem entry points (see libvmem(3))
+
+libvmmalloc.h -- definitions of libvmmalloc entry points (see libvmmalloc(3))
