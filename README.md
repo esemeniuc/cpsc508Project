@@ -1,4 +1,4 @@
-# cpsc508Project
+#cpsc508Project
 CPSC 508/436C with Margo Seltzer
 
 Idea list: https://docs.google.com/spreadsheets/d/1d5IcAig6RYBsYNjxQyyqtmS26Ah80Q3ZWhdd11BQCLo/edit#gid=0
@@ -164,6 +164,12 @@ And there you have it!
 
 ---
 
+First, get memtier_benchmark:
+- git clone https://github.com/RedisLabs/memtier_benchmark
+Then, get dependencies
+- sudo dnf install autoconf automake pkg-config libevent-devel pcre-devel
+And build
+- make
 
 - Start Redis Server: ```docker run -it --rm --name=redis redis:5-alpine```
 - Start benchmark: ```docker run -it --rm --name=memtier --link=redis redislabs/memtier_benchmark -s 172.17.0.2```
