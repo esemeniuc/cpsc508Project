@@ -29,10 +29,15 @@ ax_redis.plot(xticks, ydata_dram, label="DRAM")
 ax_redis.plot(xticks, ydata_pmem, label="PMEM")
 ax_redis.legend()
 
-# PMEM 1G Accesses FIO 
+# PMEM 1G Sequential Accesses FIO 
 ax_bar_fio_pmem_1g, fig_bar_fio_pmem_1g = plot_figure("PMEM dTLB Misses (1GB Sequential Read - FIO)", "Page Size", "dTLB Misses")
 ydata_fio_1gp = [8.46E+08, 4.17E+06, 1.73E+06]
 create_bar_chart(ax_bar_fio_pmem_1g, fig_bar_fio_pmem_1g, [1, 2, 3], ydata_fio_1gp, xticks)
+
+# PMEM 1G Random Accesses FIO 
+ax_bar_fio_pmem_1g_random, fig_bar_fio_pmem_1g_random = plot_figure("PMEM dTLB Misses (1GB Random Read - FIO)", "Page Size", "dTLB Misses")
+ydata_fio_1gp_random = [3.12E+08, 2.65E+06, 2.10E+06]
+create_bar_chart(ax_bar_fio_pmem_1g_random, fig_bar_fio_pmem_1g_random, [1, 2, 3], ydata_fio_1gp_random, xticks)
 
 # TODO: DRAM 1G Accesses FIO
 
