@@ -14,8 +14,8 @@ def plot_figure(title, xlabel, ylabel, xticks=None):
     return (ax, fig)
 
 # Wrapper to create a bar chart
-def create_bar_chart(ax, fig, xdata, ydata, xticks=None):
-    ax.bar(xdata, ydata, tick_label=xticks, log=True)
+def create_bar_chart(ax, fig, xdata, ydata, xticks=None, log=True):
+    ax.bar(xdata, ydata, tick_label=xticks, log=log)
 
 
 
@@ -44,7 +44,7 @@ create_bar_chart(ax_fiorandread_pmem_4k, fig_fiorandread_pmem_4k, [1, 2, 3], yda
 # PMEM 1G Random Read FIO
 ax_fiorandread_pmem_1g, fig_fiorandread_pmem_1g = plot_figure("PMEM - FIO Read Speed (1G Block Accesses)", "Page Size", "Read Speed (GiB/s)")
 ydata_fiorandread_pmem_1g = [5.04E+03, 5.18E+03, 5.16E+03]
-create_bar_chart(ax_fiorandread_pmem_1g, fig_fiorandread_pmem_1g, [1, 2, 3], ydata_fiorandread_pmem_1g, xticks)
+create_bar_chart(ax_fiorandread_pmem_1g, fig_fiorandread_pmem_1g, [1, 2, 3], ydata_fiorandread_pmem_1g, xticks, log=False)
 
 
 # dTLB Miss vs Page Size for 20GB Apex-MAP
