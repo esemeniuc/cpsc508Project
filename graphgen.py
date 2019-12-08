@@ -36,9 +36,21 @@ create_bar_chart(ax_bar_fio_pmem_1g, fig_bar_fio_pmem_1g, [1, 2, 3], ydata_fio_1
 
 # TODO: DRAM 1G Accesses FIO
 
-# TODO: PMEM 4K Read FIO 
+# PMEM 4K Random Read FIO 
+ax_fiorandread_pmem_4k, fig_fiorandread_pmem_4k = plot_figure("PMEM - FIO Read Speed (4K Block Accesses)", "Page Size", "Read Speed (GiB/s)")
+ydata_fiorandread_pmem_4k = [1.12E+03, 4.71E+03, 3.15E+06]
+create_bar_chart(ax_fiorandread_pmem_4k, fig_fiorandread_pmem_4k, [1, 2, 3], ydata_fiorandread_pmem_4k, xticks)
 
-# TODO: DRAM 4K Read FIO 
+# PMEM 1G Random Read FIO
+ax_fiorandread_pmem_1g, fig_fiorandread_pmem_1g = plot_figure("PMEM - FIO Read Speed (1G Block Accesses)", "Page Size", "Read Speed (GiB/s)")
+ydata_fiorandread_pmem_1g = [5.04E+03, 5.18E+03, 5.16E+03]
+create_bar_chart(ax_fiorandread_pmem_1g, fig_fiorandread_pmem_1g, [1, 2, 3], ydata_fiorandread_pmem_1g, xticks)
+
+
+# dTLB Miss vs Page Size for 20GB Apex-MAP
+ax_bar_apex, fig_bar_apex = plot_figure("dTLB Misses vs Page Size for 20GB Apex-MAP", "Page Size", "dTLB Misses", xticks)
+ydata_apex_map = [3202767, 1862, 198]
+create_bar_chart(ax_bar_apex, fig_bar_apex, [1, 2, 3], ydata_apex_map, xticks)
 
 # dTLB Misses for Simple Test
 ax_simple_test, fig_simple_test = plot_figure("dTLB Misses For Simple Test", "Page Size", "dTLB Misses that Cause Page Walk")
