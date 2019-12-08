@@ -72,4 +72,25 @@ ax_simple_test.set_xticks(index+bar_width/2)
 ax_simple_test.set_xticklabels(('4K', '2M', '1G'))
 ax_simple_test.legend()
 
+# Runtime DRAM vs PMEM Polybench 
+ax_polybench, fig_polybench = plot_figure("Polybench - DRAM vs PMEM (1G Page Size)", "Polybench Test Name", "Runtime (seconds)")
+ydata_polybench_dram = [1.720761, 3.162308, 0.004844, 1.236885, 0.002483, 4.400878, 0.001994, 9.181109]
+ydata_polybench_pmem = [1.684509, 2.910898, 0.005201, 1.211314, 0.002804, 2.924414, 0.002201, 1.503683]
+polybench_index = np.arange(8)
+bar_width = 0.2
+opacity = 0.9
+ax_polybench.bar(polybench_index, ydata_polybench_dram, bar_width, alpha=opacity, color='r', label='DRAM', log=True)
+ax_polybench.bar(polybench_index+bar_width, ydata_polybench_pmem, bar_width, alpha=opacity, color='b', label='PMEM', log=True)
+ax_polybench.set_xticks(polybench_index+bar_width/2)
+ax_polybench.set_xticklabels(('2mm', '3mm', 'atax', 'cholesky', 'durbin', 'lu', 'trisolv', 'gs'))
+ax_polybench.legend()
+
+# Try percent difference too
+ax_poly_diff, fig_poly_diff = plot_figure("Polybench - DRAM vs PMEM", "Test Name", "% Difference")
+ydata_poly_diff = list()
+ydata_poly_diff.append((ydata_polybench_dram[5]/ydata_polybench_pmem[5]) * 100)
+ydata_poly_diff.append((ydata_polybench_dram[7]/ydata_polybench_pmem[7]) * 100)
+create_bar_chart(ax_poly_diff, fig_poly_diff, [1, 2], ydata_poly_diff, ['lu', 'gs'], log=False)
+
+
 plt.show()
