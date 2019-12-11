@@ -29,7 +29,6 @@ TEST_NAMES=("2mm_time"
 
 SRC_DIR=polybench-c-4.2.1-beta
 mkdir -p bin
-mkdir -p result_logs
 mkdir -p perf_results
 
 for ((i = 0; i < ${#POLYBENCH_TESTS_DIR[@]}; ++i)); do
