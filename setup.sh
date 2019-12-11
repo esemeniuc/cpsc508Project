@@ -3,6 +3,7 @@
 sudo dnf install -y kexec-tools \
 python2 \ #for hugeadm
 perf
+ndctl
 redis
 @development-tools
 
@@ -20,3 +21,4 @@ sudo rpm -i libhugetlbfs-utils-2.20-8.fc29.x86_64.rpm
 #increase the min 2mb pages to 32GB of pages : sudo hugeadm --pool-pages-min 2MB:16384
 #Make a new directory for your page size: sudo mkdir -p /mnt/hugetlbfs-2MB
 #Then, mount: sudo mount -t hugetlbfs none -o pagesize=2MB
+
