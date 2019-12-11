@@ -24,29 +24,32 @@ int main(int argc, char **argv) {
         n = (size_t) input * 1024 * 1024 * 1024;
     }
     printf("attempting to n %ld bytes\n...  then will randomly write for ~5 seconds\n\n", n);
+
     int fd = open("/dev/dax0.0", O_RDWR);
     if (fd == -1) {
         perror("failed to open devdax\n");
     };
-    uint8_t *arr = mmap(NULL, n, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 
-//    uint_8t *arr = mmap(NULL, 19UL * 1024 * 1024 * 1024, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);//x140000000);
+    uint8_t *arr = mmap(NULL, n, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     if (arr == MAP_FAILED) {
         perror("mmap failed\n");
     }
-    for (int i = 0; i < MIN(n, 4UL * 1024 * 1024 * 1024); i++) {
+
+    for (int i = 0; i < 100 * 1000 * 1000; i++) {
+        size_t r1 = rand(), r2 = rand();
+        size_t rand_num1 = (r1 << 16) | r2;
+        size_t rand_num2 = (r2 << 16) | r1;
+
         //print every now and then
         if (i % 100000 == 0 && argc < 3) {
-            printf("%d", arr[rand() % n]);
+            printf("%d", arr[rand_num1 % n]);
         }
         //read forced with write
-        size_t rand_num = ((size_t) rand() << 16) | (size_t) rand();
-        if (arr[rand_num % n] % 10 < 5) { //50% chance of write
-            arr[i] = rand_num;
+        if (arr[rand_num2 % n] % 10 < 5) { //50% chance of write
+            arr[rand_num2] = rand_num1;
         }
         //write
-        arr[(rand_num ^ rand()) % n] = i;
+        arr[(rand_num1 ^ rand_num2) % n] = !(rand_num1 ^ rand_num2);
     }
     munmap(arr, n);
-//    munmap(arr, 19UL * 1024 * 1024 * 1024);
 }
