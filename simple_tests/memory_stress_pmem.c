@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
         int input = atoi(argv[1]);
         n = (size_t) input * 1024 * 1024 * 1024;
     }
-    printf("attempting to n %ld bytes\n...  then will randomly write for ~5 seconds\n\n", n);
+    printf("attempting to n %lu bytes\n...  then will randomly write for ~5 seconds\n\n", n);
 
     int fd = open("/dev/dax0.0", O_RDWR);
     if (fd == -1) {
@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
         }
         //read forced with write
         if (arr[rand_num2 % n] % 10 < 5) { //50% chance of write
-            arr[rand_num2] = rand_num1;
+            arr[rand_num2 % n] = rand_num1;
         }
         //write
         arr[(rand_num1 ^ rand_num2) % n] = !(rand_num1 ^ rand_num2);
