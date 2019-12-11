@@ -13,4 +13,4 @@ for i in {1..16}; do
     done
 done
 
-rm input a.out
+rm input a.out Apex.c
