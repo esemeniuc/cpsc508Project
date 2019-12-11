@@ -11,10 +11,7 @@ cd fio || exit #script expects to be in directory
 
 #simple_tests
 cd simple_tests || exit
-gcc memory_stress_dram.c
-perf stat -B -d -d -d ./a.out 19
-gcc memory_stress_pmem.c
-sudo perf stat -B -d -d -d ./a.out 19
+./simple_dram.sh
 
 #sudo ndctl create-namespace -e namespace0.0 -m devdax -a 4K -f
 
