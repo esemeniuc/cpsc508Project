@@ -3,15 +3,26 @@
 #apex
 cd apex-map/apex-map || exit
 ./script.sh
+cd ..
 
 #fio
 cd fio || exit #script expects to be in directory
 ./run_dram_rand_RW_1G.sh
 ./run_dram_seq_R_1G.sh
+cd ..
 
 #simple_tests
 cd simple_tests || exit
 ./simple_dram.sh
+cd ..
+
+#polybench
+cd polybench || exit
+./compile_polybench.sh
+./polybench_dram.sh
+rm -rf bin
+cd ..
+
 
 #sudo ndctl create-namespace -e namespace0.0 -m devdax -a 4K -f
 
