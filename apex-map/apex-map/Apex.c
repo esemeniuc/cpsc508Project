@@ -44,7 +44,7 @@ int initData(double *);
 double test();
 double gettimeoverhead();
 
-int sLocality[] = {1,4,16,64,256,1024,4096,16384,65536,262144,1048576,4194304,16777216,67108864};
+int sLocality[] = {65536};
 double tLocality[] = {0.0001};
 long long int *ind;
 
@@ -66,8 +66,8 @@ int main(int argc, char *argv[]) {
      exit(1);
   }
   data0 = &data0[0];
-  tmp = (long long int) 1024 * 67108864;
-  MAXNCL = MAX(MAXNCL, 67108864);
+  tmp = (long long int) 1024 * 65536;
+  MAXNCL = MAX(MAXNCL, 65536);
   B = 1024; 
   ind = (long long int *) MALLOC(B * sizeof(long long int));
   if (ind == NULL) { 
@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
   printf("Start Time : %s\n", ctime(&tval));
   printf("------------------------------------------------------\n\n");
 
-  for (i = 0; i < 14; i++) {
+  for (i = 0; i < 1; i++) {
     L = sLocality[i];
     tmp = (long long int) I * L;
     B = MIN(MAXNCL, tmp); 
