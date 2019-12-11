@@ -14,9 +14,12 @@ filename=/dev/dax0.0  # Need to work on a file daxX.0
 filesize=16GB          # file will be of this size
 offset_increment=1G  # and each of 'numjobs' will get its own space within the file
 
-time_based #run for the specified runtime duration even if the files are completely read or written. The same workload will be repeated as many times as runtime allows.
-runtime=10s
-ramp_time=5s #warm up time
+#time_based #run for the specified runtime duration even if the files are completely read or written. The same workload will be repeated as many times as runtime allows.
+#runtime=10s
+#ramp_time=5s #warm up time
+
+bs=1G
+numjobs=6  # depending on CPU core count more can be better, but also can be a bottleneck
 
 [SeqRead]
-rw=read
+rw=read #seq read
