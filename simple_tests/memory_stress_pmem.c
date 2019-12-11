@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
             arr[i] = rand_num;
         }
         //write
-        arr[rand() % n] = i;
+        arr[(rand_num ^ rand()) % n] = i;
     }
     munmap(arr, n);
 //    munmap(arr, 19UL * 1024 * 1024 * 1024);
