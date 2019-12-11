@@ -105,4 +105,5 @@ venv.bak/
 
 libvmmap/
 .idea/
+bin/
 a.out
