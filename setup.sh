@@ -1,7 +1,10 @@
 #!/bin/sh
 
-sudo dnf install -y kexec \
-	python2 \ #for hugeadm
+sudo dnf install -y kexec-tools \
+python2 \ #for hugeadm
+perf
+redis
+@development-tools
 
 #backend for hugepages
 wget http://download-ib01.fedoraproject.org/pub/fedora/linux/releases/30/Everything/x86_64/os/Packages/l/libhugetlbfs-2.20-8.fc29.x86_64.rpm
@@ -11,7 +14,7 @@ sudo rpm -i libhugetlbfs-2.20-8.fc29.x86_64.rpm
 wget http://download-ib01.fedoraproject.org/pub/fedora/linux/releases/30/Everything/x86_64/os/Packages/l/libhugetlbfs-utils-2.20-8.fc29.x86_64.rpm
 sudo rpm -i libhugetlbfs-utils-2.20-8.fc29.x86_64.rpm
 
-#To use hugeadm, run to check that you have 2MB and 1GB pages supported
+#To use hugeadm, run to check that you have 2MB and 1GB pages supported:
 #hugeadm --pool-list 
 #and listed as zero zero
 #increase the min 2mb pages to 32GB of pages : sudo hugeadm --pool-pages-min 2MB:16384
