@@ -13,8 +13,8 @@ sync=0 #use synchornouse io for buffered writes
 ioengine=libaio
 iodepth=1 #Number of I/O units to keep in flight against the file. default is 1
 
-filename=/mnt/ramdisk/blah  # Need to work on a file daxX.0
-filesize=16G          # file will be of this size
+filename=/mnt/ramdisk/tmp # Need to work on a file daxX.0
+filesize=16GB          # file will be of this size
 offset_increment=1G  # and each of 'numjobs' will get its own space within the file
 
 time_based #run for the specified runtime duration even if the files are completely read or written. The same workload will be repeated as many times as runtime allows.
