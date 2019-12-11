@@ -1,20 +1,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
-
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
 #include <sys/mman.h>
 
-//This program ns some number of gigabytes of longs and then randomly write and reads from them with zero locality
+//This program runs some number of gigabytes of chars and then randomly write and reads from them with zero locality
 //Build to test if huge pages is installed correct. Would see new zero dTLB misses if 1GB pages are working.
 //
 //Use: compile and pass number of GB wanted, if no arguments are passed this defaults to 4GB can add 2nd parameter "quiet" to prevent printing
 //
-//  ./a.out 
-//  ./a.out 25
-//  ./a.out 50 quiet
+//  ./a.out
+//  ./a.out 12
+//  ./a.out 19 quiet
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
 int main(int argc, char **argv) {
