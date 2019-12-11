@@ -9,7 +9,7 @@ sync=0 #use synchronous io for buffered writes
 ioengine=mmap
 iodepth=1 #Number of I/O units to keep in flight against the file. default is 1
 
-filename=/dev/zero # Need to work on a file daxX.0
+filename=/dev/zero # Need to work on a file
 filesize=16GB          # file will be of this size
 offset_increment=1G  # and each of 'numjobs' will get its own space within the file
 
@@ -21,9 +21,4 @@ bs=1G
 numjobs=4  # depending on CPU core count more can be better, but also can be a bottleneck
 
 [SeqRead]
-bs=1G
-numjobs=4  # depending on CPU core count more can be better, but also can be a bottleneck
-
-rw=randrw #Mixed random reads and writes.
-rwmixread=100 #Percentage of a mixed workload that should be reads
-percentage_random=0
+rw=read

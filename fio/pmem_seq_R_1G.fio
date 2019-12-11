@@ -19,9 +19,4 @@ runtime=10s
 ramp_time=5s #warm up time
 
 [SeqRead]
-bs=1G
-numjobs=4  # depending on CPU core count more can be better, but also can be a bottleneck
-
-rw=randrw #Mixed random reads and writes. 
-rwmixread=100 #Percentage of a mixed workload that should be reads
-percentage_random=0
+rw=read
