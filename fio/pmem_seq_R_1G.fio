@@ -1,14 +1,10 @@
-#
-# run command for this workload:
-# numactl -N 0 fio DaxSeqR.fio  # it binds this FIO workload to CPU 0 only. It should be set according to /dev/daxX socket's number
-#
 [global]
 thread #Use threads created with pthread_create(3) instead of processes created with fork(2)
 group_reporting
 norandommap
 overwrite=1
 thinktime=0 
-sync=0 #use synchornouse io for buffered writes
+sync=0 #use synchronous io for buffered writes
 
 ioengine=dev-dax
 iodepth=1 #Number of I/O units to keep in flight against the file. default is 1
@@ -22,9 +18,10 @@ time_based #run for the specified runtime duration even if the files are complet
 runtime=10s
 ramp_time=5s #warm up time
 
-bs=4K
+[SeqRead]
+bs=1G
 numjobs=4  # depending on CPU core count more can be better, but also can be a bottleneck
 
-
-[dev-dax-rw]
-rw=randrw
+rw=randrw #Mixed random reads and writes. 
+rwmixread=100 #Percentage of a mixed workload that should be reads
+percentage_random=0
