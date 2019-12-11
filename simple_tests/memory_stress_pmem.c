@@ -19,11 +19,11 @@
 
 int main(int argc, char **argv) {
     size_t n = 4UL * 1024 * 1024 * 1024;
-    if (argc == 3) {
+    if (argc > 1) {
         int input = atoi(argv[1]);
         n = (size_t) input * 1024 * 1024 * 1024;
     }
-    printf("attempting to n %lu bytes\n...  then will randomly write for ~5 seconds\n\n", n);
+    printf("attempting to allocate %lu bytes\n...  then will randomly write for ~5 seconds\n\n", n);
 
     int fd = open("/dev/dax0.0", O_RDWR);
     if (fd == -1) {
