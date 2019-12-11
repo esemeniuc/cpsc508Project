@@ -9,7 +9,7 @@ for i in {1..16}; do
         gcc gen.pub.c -lm -w > /dev/null
         ./a.out #run script generator
         gcc Apex.c -lm -w > /dev/null
-        perf stat -B -d -d -d ./a.out > /dev/null #run actual thing
+        perf stat -B -d -d -d -e dtlb_load_misses.miss_causes_a_walk ./a.out > /dev/null #run actual thing
     done
 done
 
