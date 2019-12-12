@@ -10,5 +10,5 @@ TEST_NAMES=("2mm_time"
     "gramschmidt_time")
 
 for ((i = 0; i < ${#TEST_NAMES[@]}; ++i)); do
-  sudo perf stat -B -ddd -e dtlb_load_misses.miss_causes_a_walk ../wrapper-devdax.sh /dev/dax0.0 $((28*1024*1024*1024)) bin/${TEST_NAMES[i]} perf_results/${TEST_NAMES[i]}_perf.log
+  sudo perf stat -ddd -x '|' -e dtlb_load_misses.miss_causes_a_walk --append -o perf_results/${TEST_NAMES[i]}_pmem.log ../wrapper-devdax.sh /dev/dax0.0 $((28*1024*1024*1024)) bin/${TEST_NAMES[i]} /dev/null
 done
