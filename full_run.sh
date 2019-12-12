@@ -8,7 +8,7 @@ if [ ! -f /root/state0 ]; then
     echo "RUNNING SETUP"
     #./setup.sh
     cat /proc/cmdline > backup_cmdline
-    sudo tee /etc/systemd/system/benchmark.service <<EOF
+    sudo tee -a /etc/systemd/system/benchmark.service <<EOF
 [Unit]
 Description=DRAM/PMEM Benchmark
 
