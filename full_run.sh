@@ -36,6 +36,7 @@ if [ ! -f state_dram4K ]; then
     touch state_dram4K
     sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) default_hugepagesz=2M"
     sudo systemctl kexec
+    exit 0
 fi
 
 #2M
@@ -49,6 +50,7 @@ if [ ! -f state_dram2M ]; then
     sudo hugeadm --pool-pages-max 2M:0
     sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) default_hugepagesz=1G"
     sudo systemctl kexec
+    exit 0
 fi
 
 #1G
@@ -62,6 +64,7 @@ if [ ! -f state_dram1G ]; then
     sudo hugeadm --pool-pages-max 1G:0
     sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) mmemmap=32G!4G"
     sudo systemctl kexec
+    exit 0
 fi
 
 #sudo ndctl create-namespace -e namespace0.0 -m devdax -a 4K -f
