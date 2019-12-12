@@ -44,7 +44,7 @@ if [ ! -f state_dram2M ]; then
     echo "RUNNING 2M"
     export HUGECTL_CMD="hugectl --heap"
     export TLB_SIZE="2M"
-    sudo hugeadm --pool-pages-min 2M:10240
+    sudo hugeadm --pool-pages-max 2M:10240
     ./dram.sh
     touch state_dram2M
     sudo hugeadm --pool-pages-max 2M:0
@@ -58,7 +58,7 @@ if [ ! -f state_dram1G ]; then
     echo "RUNNING 1G"
     export HUGECTL_CMD="hugectl --heap"
     export TLB_SIZE="1G"
-    sudo hugeadm --pool-pages-min 1G:20
+    sudo hugeadm --pool-pages-max 1G:20
     ./dram.sh
     touch state_dram1G
     sudo hugeadm --pool-pages-max 1G:0

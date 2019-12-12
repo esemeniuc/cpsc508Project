@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 T_LOC_ARR=(1.0 0.0001)
 mkdir -p perf_results
 
