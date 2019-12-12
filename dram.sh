@@ -1,30 +1,48 @@
 #!/bin/bash
 
-#apex
-cd apex-map/apex-map || exit
-./apex_dram.sh
-cd ..
+TLB_SIZES=("4K"
+"2M"
+"1G")
 
-#fio
-cd fio || exit #script expects to be in directory
-./run_dram_rand_RW_1G.sh
-./run_dram_seq_R_1G.sh
-cd ..
+#20 gig pool sizes
+HUGEADM_ALLOC_CMDS=("" #none for 4K
+"sudo hugeadm --pool-pages-min 2M:10240"
+"sudo hugeadm --pool-pages-min 1G:20")
 
-#polybench
-cd polybench || exit
-./compile_polybench.sh
-./polybench_dram.sh
-rm -rf bin
-cd ..
+HUGECTL_CMDS=("" #no hugectl intercept needed for 4K
+"hugectl --heap=2097152"
+"hugectl --heap=1073741824"
+)
 
-#simple_tests
-cd simple_tests || exit
-./simple_dram.sh
-cd ..
+for ((i = 0; i < ${#TLB_SIZES[@]}; ++i)); do
+    export HUGECTL_CMD=${HUGECTL_CMDS[i]}
+    export TLB_SIZE=${TLB_SIZES[i]}
 
+    bash -c ${HUGEADM_ALLOC_CMDS[i]}
+    #apex
+    cd apex-map/apex-map || exit
+    ./apex_dram.sh
+    cd ..
 
+    #fio
+    cd fio || exit #script expects to be in directory
+    ./run_dram_rand_RW_1G.sh
+    ./run_dram_seq_R_1G.sh
+    cd ..
 
+    #polybench
+    cd polybench || exit
+    ./compile_polybench.sh
+    ./polybench_dram.sh
+    rm -rf bin
+    cd ..
+
+    #simple_tests
+    cd simple_tests || exit
+    ./simple_dram.sh
+    cd ..
+
+done
 
 #sudo ndctl create-namespace -e namespace0.0 -m devdax -a 4K -f
 
