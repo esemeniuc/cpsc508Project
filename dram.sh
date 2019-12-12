@@ -2,23 +2,19 @@
 set -x
 
 #apex
-cd apex-map/apex-map || exit
-./apex_dram.sh
-cd ..
+(cd apex-map/apex-map || exit
+./apex_dram.sh) #using subshell
 
 #fio
-cd fio || exit #script expects to be in directory
-./dram.sh
-cd ..
+(cd fio || exit
+./dram.sh)
 
 #polybench
-cd polybench || exit
+(cd polybench || exit
 ./compile_polybench.sh
 ./polybench_dram.sh
-rm -rf bin
-cd ..
+rm -rf bin)
 
 #simple_tests
-cd simple_tests || exit
-./simple_dram.sh
-cd ..
+(cd simple_tests || exit
+./simple_dram.sh)
