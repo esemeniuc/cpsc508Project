@@ -18,6 +18,9 @@ for ((i = 0; i < ${#TLB_SIZES[@]}; ++i)); do
     export HUGECTL_CMD=${HUGECTL_CMDS[i]}
     export TLB_SIZE=${TLB_SIZES[i]}
 
+    #reset pools at each iteration
+    sudo hugeadm --pool-pages-max 2M:0
+    sudo hugeadm --pool-pages-max 1G:0
     if [ -n "${HUGEADM_ALLOC_CMDS[i]}" ]; then #don't run empty command
         bash -c ${HUGEADM_ALLOC_CMDS[i]}
     fi
