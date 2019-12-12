@@ -1,6 +1,6 @@
 #!/bin/bash
-#20 gig pool sizes
-
+#20 gig pool sizes with hugeadm
+set -x
 SCRIPT=`realpath $0`
 #SCRIPTPATH=`dirname $SCRIPT`
 
@@ -23,6 +23,7 @@ fi
 
 #4K
 if [ ! -f /root/dram4K ]; then
+    echo "RUNNING 4K"
     export HUGECTL_CMD=""
     export TLB_SIZE="4K"
     ./dram.sh
@@ -33,6 +34,7 @@ fi
 
 #2M
 if [ ! -f /root/dram2M ]; then
+    echo "RUNNING 2M"
     export HUGECTL_CMD="hugectl --heap=2097152"
     export TLB_SIZE="2M"
     sudo hugeadm --pool-pages-min 2M:10240
@@ -45,6 +47,7 @@ fi
 
 #1G
 if [ ! -f /root/dram1G ]; then
+    echo "RUNNING 1G"
     export HUGECTL_CMD="hugectl --heap=1073741824"
     export TLB_SIZE="1G"
     sudo hugeadm --pool-pages-min 1G:20
