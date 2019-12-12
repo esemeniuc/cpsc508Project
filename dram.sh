@@ -18,7 +18,10 @@ for ((i = 0; i < ${#TLB_SIZES[@]}; ++i)); do
     export HUGECTL_CMD=${HUGECTL_CMDS[i]}
     export TLB_SIZE=${TLB_SIZES[i]}
 
-    bash -c ${HUGEADM_ALLOC_CMDS[i]}
+    if [ -n "${HUGEADM_ALLOC_CMDS[i]}" ]; then #don't run empty command
+        bash -c ${HUGEADM_ALLOC_CMDS[i]}
+    fi
+
     #apex
     cd apex-map/apex-map || exit
     ./apex_dram.sh
