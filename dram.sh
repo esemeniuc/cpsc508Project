@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 TLB_SIZES=("4K"
 "2M"
 "1G")
