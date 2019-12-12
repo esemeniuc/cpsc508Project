@@ -2,7 +2,7 @@
 #20 gig pool sizes with hugeadm
 set -x
 SCRIPT=`realpath $0`
-#SCRIPTPATH=`dirname $SCRIPT`
+SCRIPTPATH=`dirname $SCRIPT`
 
 if [ ! -f state_setup ]; then
     echo "RUNNING SETUP"
@@ -14,7 +14,7 @@ Description=DRAM/PMEM Benchmark
 
 [Service]
 Type=simple
-ExecStart=/bin/bash ${SCRIPT}
+ExecStart=/bin/bash -c "${SCRIPT} | tee -a ${SCRIPTPATH}/output.txt"
 
 [Install]
 WantedBy=multi-user.target
