@@ -43,7 +43,7 @@ Eg for testing Apex-Map with 1GB TLB size
 sudo kexec -l /boot/vmlinuz-5.0.3 --initrd=/boot/initrd.img-5.0.3 --append="root=UUID=7bc92aaf-86c1-4520-b473-a8064d22cb43 ro quiet splash $vt_handoff default_hugepagesz=1G"
 sudo systemctl kexec
 sudo hugeadm --pool-pages-min 1GB:10 #allocate 10 pages
-sudo ~/linux-5.0.3/tools/perf/perf stat -B -d -d -d hugectl --heap ./cpsc508Project/apex-map/apex-map/a.out
+sudo ~/linux-5.0.3/tools/perf/perf stat -B -ddd hugectl --heap ./cpsc508Project/apex-map/apex-map/a.out
 ```
 
 ### Setting up emulated NVM
