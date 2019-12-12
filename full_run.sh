@@ -14,7 +14,7 @@ Description=DRAM/PMEM Benchmark
 
 [Service]
 Type=simple
-ExecStart=/bin/bash -c "${SCRIPT} | tee -a ${SCRIPTPATH}/output.txt"
+ExecStart=/bin/bash -c "${SCRIPT} >> ${SCRIPTPATH}/output.txt"
 
 [Install]
 WantedBy=multi-user.target
