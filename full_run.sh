@@ -4,7 +4,9 @@ set -x
 SCRIPT=`realpath $0`
 SCRIPTPATH=`dirname $SCRIPT`
 
-if [ ! -f ${SCRIPTPATH}/state_setup ]; then
+cd ${SCRIPTPATH} || exit
+
+if [ ! -f state_setup ]; then
     echo "RUNNING SETUP"
     #./setup.sh
     cat /proc/cmdline > backup_cmdline
@@ -26,7 +28,7 @@ EOF
 fi
 
 #4K
-if [ ! -f ${SCRIPTPATH}/state_dram4K ]; then
+if [ ! -f state_dram4K ]; then
     echo "RUNNING 4K"
     export HUGECTL_CMD=""
     export TLB_SIZE="4K"
@@ -37,7 +39,7 @@ if [ ! -f ${SCRIPTPATH}/state_dram4K ]; then
 fi
 
 #2M
-if [ ! -f ${SCRIPTPATH}/state_dram2M ]; then
+if [ ! -f state_dram2M ]; then
     echo "RUNNING 2M"
     export HUGECTL_CMD="hugectl --heap"
     export TLB_SIZE="2M"
@@ -50,7 +52,7 @@ if [ ! -f ${SCRIPTPATH}/state_dram2M ]; then
 fi
 
 #1G
-if [ ! -f ${SCRIPTPATH}/state_dram1G ]; then
+if [ ! -f state_dram1G ]; then
     echo "RUNNING 1G"
     export HUGECTL_CMD="hugectl --heap"
     export TLB_SIZE="1G"
