@@ -4,7 +4,7 @@ set -x
 SCRIPT=`realpath $0`
 #SCRIPTPATH=`dirname $SCRIPT`
 
-if [ ! -f /root/state0 ]; then
+if [ ! -f state_setup ]; then
     echo "RUNNING SETUP"
     #./setup.sh
     cat /proc/cmdline > backup_cmdline
@@ -22,43 +22,43 @@ EOF
 #    sudo mv benchmark.service /etc/systemd/system/benchmark.service
 #    sudo chown root:root /etc/systemd/system/benchmark.service
     sudo systemctl enable benchmark.service
-    sudo touch /root/state0
+    sudo touch state_setup
 fi
 
 #4K
-if [ ! -f /root/dram4K ]; then
+if [ ! -f state_dram4K ]; then
     echo "RUNNING 4K"
     export HUGECTL_CMD=""
     export TLB_SIZE="4K"
     ./dram.sh
-    sudo touch /root/dram4K
-    kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) default_hugepagesz=2M"
+    sudo touch state_dram4K
+    sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) default_hugepagesz=2M"
     sudo systemctl kexec
 fi
 
 #2M
-if [ ! -f /root/dram2M ]; then
+if [ ! -f state_dram2M ]; then
     echo "RUNNING 2M"
     export HUGECTL_CMD="hugectl --heap=2097152"
     export TLB_SIZE="2M"
     sudo hugeadm --pool-pages-min 2M:10240
     ./dram.sh
-    sudo touch /root/dram2M
+    sudo touch state_dram2M
     sudo hugeadm --pool-pages-max 2M:0
-    kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) default_hugepagesz=1G"
+    sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) default_hugepagesz=1G"
     sudo systemctl kexec
 fi
 
 #1G
-if [ ! -f /root/dram1G ]; then
+if [ ! -f state_dram1G ]; then
     echo "RUNNING 1G"
     export HUGECTL_CMD="hugectl --heap=1073741824"
     export TLB_SIZE="1G"
     sudo hugeadm --pool-pages-min 1G:20
     ./dram.sh
-    sudo touch /root/dram1G
+    sudo touch state_dram1G
     sudo hugeadm --pool-pages-max 1G:0
-    kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) mmemmap=32G!4G"
+    sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) mmemmap=32G!4G"
     sudo systemctl kexec
 fi
 
