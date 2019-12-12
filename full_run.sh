@@ -19,10 +19,10 @@ ExecStart=/bin/bash -c "${SCRIPT} | tee -a ${SCRIPTPATH}/output.txt"
 [Install]
 WantedBy=multi-user.target
 EOF
-#    sudo mv benchmark.service /etc/systemd/system/benchmark.service
-#    sudo chown root:root /etc/systemd/system/benchmark.service
-    sudo systemctl enable benchmark.service
+
     sudo touch state_setup
+    sudo systemctl enable --now benchmark.service
+    exit 0
 fi
 
 #4K
