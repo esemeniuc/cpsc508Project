@@ -1,6 +1,7 @@
 #!/bin/bash
 
 T_LOC_ARR=(1.0 0.0001)
+mkdir -p perf_results
 
 for i in {1..16}; do
     S_LOC=$((2**i))
@@ -9,7 +10,7 @@ for i in {1..16}; do
         gcc gen.pub.c -lm -w > /dev/null
         ./a.out #run script generator
         gcc Apex.c -lm -w > /dev/null
-        perf stat -ddd -x '|' -e dtlb_load_misses.miss_causes_a_walk ./a.out > /dev/null #run actual thing
+        perf stat -ddd -x '|' -e dtlb_load_misses.miss_causes_a_walk --append -o perf_results/apex_dram.log ./a.out > /dev/null #run actual thing
     done
 done
 

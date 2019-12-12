@@ -2,7 +2,7 @@
 
 #apex
 cd apex-map/apex-map || exit
-./script.sh
+./apex_dram.sh
 cd ..
 
 #fio
