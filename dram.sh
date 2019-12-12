@@ -1,17 +1,22 @@
 #!/bin/bash
 set -x
-TLB_SIZES=("4K"
+TLB_SIZES=(
+"1G"
 "2M"
-"1G")
+"4K"
+)
 
 #20 gig pool sizes
-HUGEADM_ALLOC_CMDS=("" #none for 4K
+HUGEADM_ALLOC_CMDS=(
+"sudo hugeadm --pool-pages-min 1G:20"
 "sudo hugeadm --pool-pages-min 2M:10240"
-"sudo hugeadm --pool-pages-min 1G:20")
+"" #none for 4K
+)
 
-HUGECTL_CMDS=("" #no hugectl intercept needed for 4K
-"hugectl --heap=2097152"
+HUGECTL_CMDS=(
 "hugectl --heap=1073741824"
+"hugectl --heap=2097152"
+"" #no hugectl intercept needed for 4K
 )
 
 for ((i = 0; i < ${#TLB_SIZES[@]}; ++i)); do
