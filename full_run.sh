@@ -20,7 +20,7 @@ ExecStart=/bin/bash -c "${SCRIPT} &>> ${SCRIPTPATH}/output.txt"
 WantedBy=multi-user.target
 EOF
 
-    sudo touch state_setup
+    touch state_setup
     sudo systemctl enable --now benchmark.service
     exit 0
 fi
@@ -31,7 +31,7 @@ if [ ! -f state_dram4K ]; then
     export HUGECTL_CMD=""
     export TLB_SIZE="4K"
     ./dram.sh
-    sudo touch state_dram4K
+    touch state_dram4K
     sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) default_hugepagesz=2M"
     sudo systemctl kexec
 fi
@@ -43,7 +43,7 @@ if [ ! -f state_dram2M ]; then
     export TLB_SIZE="2M"
     sudo hugeadm --pool-pages-min 2M:10240
     ./dram.sh
-    sudo touch state_dram2M
+    touch state_dram2M
     sudo hugeadm --pool-pages-max 2M:0
     sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) default_hugepagesz=1G"
     sudo systemctl kexec
@@ -56,7 +56,7 @@ if [ ! -f state_dram1G ]; then
     export TLB_SIZE="1G"
     sudo hugeadm --pool-pages-min 1G:20
     ./dram.sh
-    sudo touch state_dram1G
+    touch state_dram1G
     sudo hugeadm --pool-pages-max 1G:0
     sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) mmemmap=32G!4G"
     sudo systemctl kexec
