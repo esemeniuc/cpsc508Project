@@ -20,6 +20,7 @@ ExecStart=/bin/bash ${SCRIPT}
 WantedBy=multi-user.target
 EOF
     sudo mv benchmark.service /etc/systemd/system/benchmark.service
+    sudo systemctl enable benchmark.service
     sudo touch /root/state0
 fi
 
