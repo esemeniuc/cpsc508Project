@@ -24,7 +24,7 @@ EOF
 
     touch state_setup
     sudo systemctl enable --now benchmark.service
-    exit 0
+    exit 0 #use to stop race until reboot kicks in
 fi
 
 #4K
