@@ -1742,9 +1742,6 @@ pool_open(pool_t *pool, size_t size, unsigned pool_id)
 pool_t *
 je_pool_create(void *addr, size_t size, int zeroed, int empty)
 {
-	
-	malloc_printf("testtest\n");
-	
 	if (malloc_init())
 		return (NULL);
 

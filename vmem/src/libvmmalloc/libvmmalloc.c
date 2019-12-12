@@ -457,7 +457,7 @@ libvmmalloc_create(const char *dir, size_t size)
 	vmp->size = size;
 	vmp->caller_mapped = 0;
         
-	out_log("before jemal", 0,0,0,0);
+	//out_log("before jemal", 0,0,0,0);
 
 	/* Prepare pool for jemalloc */
 	if (je_vmem_pool_create((void *)((uintptr_t)addr + Header_size),
@@ -468,7 +468,7 @@ libvmmalloc_create(const char *dir, size_t size)
 		return NULL;
 	}
 
-	out_log("afeter",0,0,0,0);
+	//out_log("afeter",0,0,0,0);
 
 	/*
 	 * If possible, turn off all permissions on the pool header page.
