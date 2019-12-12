@@ -25,14 +25,25 @@ xticks=["4K", "2M", "1G"]
 
 ax_redis, fig_redis = plot_figure("GETs/second - PMEM vs DRAM", "Page Size", "Throughput (GETs/sec)")
 
-ax_redis.plot(xticks, ydata_dram, label="DRAM")
+line, = ax_redis.plot(xticks, ydata_dram, label="DRAM")
+line.set_dashes([2, 2, 10, 2]) 
 ax_redis.plot(xticks, ydata_pmem, label="PMEM")
 ax_redis.legend()
 
 # PMEM 1G Sequential Accesses FIO 
-ax_bar_fio_pmem_1g, fig_bar_fio_pmem_1g = plot_figure("PMEM dTLB Misses (1GB Sequential Read - FIO)", "Page Size", "dTLB Misses")
-ydata_fio_1gp = [8.46E+08, 4.17E+06, 1.73E+06]
-create_bar_chart(ax_bar_fio_pmem_1g, fig_bar_fio_pmem_1g, [1, 2, 3], ydata_fio_1gp, xticks)
+ax_bar_fio_pmem_1g, fig_bar_fio_pmem_1g = plot_figure("PMEM vd DRAM dTLB Misses (1GB Sequential Read - FIO)", "Page Size", "dTLB Misses")
+ydata_fio_1g_dram_seq = [6502618, ]
+ydata_fio_1gp_seq = [8.46E+08, 4.17E+06, 1.73E+06]
+index = np.arange(3)
+bar_width = 0.35
+opacity = 0.9
+ax_bar_fio_pmem_1g.bar(index, ydata_fio_1g_dram_seq, bar_width, alpha=opacity, color='r', label ='DRAM', log=True, hatch="//")
+ax_bar_fio_pmem_1g.bar(index+bar_width, ydata_fio_1gp_seq, bar_width, alpha=opacity, color='b', label='PMEM', log=True)
+ax_bar_fio_pmem_1g.set_xlabel('Page Size')
+ax_bar_fio_pmem_1g.set_ylabel('dTLB Misses')
+ax_bar_fio_pmem_1g.set_xticks(index+bar_width/2)
+ax_bar_fio_pmem_1g.set_xticklabels(('4K', '2M', '1G'))
+ax_bar_fio_pmem_1g.legend()
 
 # PMEM 1G Random Accesses FIO 
 ax_bar_fio_pmem_1g_random, fig_bar_fio_pmem_1g_random = plot_figure("PMEM dTLB Misses (1GB Random Read - FIO)", "Page Size", "dTLB Misses")
@@ -64,7 +75,7 @@ ydata_simple_test_pmem = [124648518, 82780288, 32855]
 index = np.arange(3)
 bar_width = 0.35
 opacity = 0.9
-ax_simple_test.bar(index, ydata_simple_test_dram, bar_width, alpha=opacity, color='r', label ='DRAM', log=True)
+ax_simple_test.bar(index, ydata_simple_test_dram, bar_width, alpha=opacity, color='r', label ='DRAM', log=True, hatch="//")
 ax_simple_test.bar(index+bar_width, ydata_simple_test_pmem, bar_width, alpha=opacity, color='b', label='PMEM', log=True)
 ax_simple_test.set_xlabel('Page Size')
 ax_simple_test.set_ylabel('dTLB Misses Causing a Page Table Walk')
@@ -79,7 +90,7 @@ ydata_polybench_pmem = [1.684509, 2.910898, 0.005201, 1.211314, 0.002804, 2.9244
 polybench_index = np.arange(8)
 bar_width = 0.2
 opacity = 0.9
-ax_polybench.bar(polybench_index, ydata_polybench_dram, bar_width, alpha=opacity, color='r', label='DRAM', log=True)
+ax_polybench.bar(polybench_index, ydata_polybench_dram, bar_width, alpha=opacity, color='r', label='DRAM', log=True, hatch="//")
 ax_polybench.bar(polybench_index+bar_width, ydata_polybench_pmem, bar_width, alpha=opacity, color='b', label='PMEM', log=True)
 ax_polybench.set_xticks(polybench_index+bar_width/2)
 ax_polybench.set_xticklabels(('2mm', '3mm', 'atax', 'cholesky', 'durbin', 'lu', 'trisolv', 'gs'))
@@ -91,6 +102,32 @@ ydata_poly_diff = list()
 ydata_poly_diff.append((ydata_polybench_dram[5]/ydata_polybench_pmem[5]) * 100)
 ydata_poly_diff.append((ydata_polybench_dram[7]/ydata_polybench_pmem[7]) * 100)
 create_bar_chart(ax_poly_diff, fig_poly_diff, [1, 2], ydata_poly_diff, ['lu', 'gs'], log=False)
+
+# Postmark PMEM vs DRAM
+ax_postmark, fig_postmark = plot_figure("Postmark - DRAM vs PMEM", "Page Size", "Reads (MB/s")
+ydata_postmark_dram = [33.66, 38.47, 29.92]
+ydata_postmark_pmem = [33.66, 38.47, 38.47]
+postmark_index = np.arange(3)
+bar_width = 0.3
+opacity = 0.9
+ax_postmark.bar(postmark_index, ydata_postmark_dram, bar_width, alpha=opacity, color='r', label='DRAM', hatch="//")
+ax_postmark.bar(postmark_index+bar_width, ydata_postmark_pmem, bar_width, alpha=opacity, color='b', label='PMEM')
+ax_postmark.set_xticks(postmark_index+bar_width/2)
+ax_postmark.set_xticklabels(('4K', '2M', '1G'))
+ax_postmark.legend()
+
+ax_postmark, fig_postmark = plot_figure("Postmark - DRAM vs PMEM", "Page Size", "Reads (MB/s")
+ydata_postmark_dram = [33.66, 38.47, 29.92]
+ydata_postmark_pmem = [33.66, 38.47, 38.47]
+postmark_index = np.arange(3)
+bar_width = 0.3
+opacity = 0.9
+ax_postmark.bar(postmark_index, ydata_postmark_dram, bar_width, alpha=opacity, color='r', label='DRAM', hatch="//")
+ax_postmark.bar(postmark_index+bar_width, ydata_postmark_pmem, bar_width, alpha=opacity, color='b', label='PMEM')
+ax_postmark.set_xticks(postmark_index+bar_width/2)
+ax_postmark.set_xticklabels(('4K', '2M', '1G'))
+ax_postmark.legend()
+
 
 
 plt.show()
