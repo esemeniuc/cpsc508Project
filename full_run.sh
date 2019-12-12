@@ -10,7 +10,7 @@ if [ ! -f /root/state0 ]; then
     cat /proc/cmdline > backup_cmdline
     cat > benchmark.service<<EOF
 [Unit]
-Description=Example systemd service.
+Description=DRAM/PMEM Benchmark
 
 [Service]
 Type=simple
@@ -20,6 +20,7 @@ ExecStart=/bin/bash ${SCRIPT}
 WantedBy=multi-user.target
 EOF
     sudo mv benchmark.service /etc/systemd/system/benchmark.service
+    sudo chown root:root /etc/systemd/system/benchmark.service
     sudo systemctl enable benchmark.service
     sudo touch /root/state0
 fi
