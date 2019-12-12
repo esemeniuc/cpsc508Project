@@ -8,7 +8,8 @@ if [ ! -f /root/state0 ]; then
     echo "RUNNING SETUP"
     #./setup.sh
     cat /proc/cmdline > backup_cmdline
-    echo "[Unit]
+    cat > benchmark.service<<EOF
+[Unit]
 Description=Example systemd service.
 
 [Service]
@@ -16,8 +17,9 @@ Type=simple
 ExecStart=/bin/bash ${SCRIPT}
 
 [Install]
-WantedBy=multi-user.target"
-
+WantedBy=multi-user.target
+EOF
+    sudo mv benchmark.service /etc/systemd/system/benchmark.service
     sudo touch /root/state0
 fi
 
