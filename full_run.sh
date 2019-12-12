@@ -32,7 +32,7 @@ if [ ! -f /root/dram4K ]; then
     export TLB_SIZE="4K"
     ./dram.sh
     sudo touch /root/dram4K
-    kexec -e "$(cat backup_cmdline) default_hugepagesz=2M"
+    kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r) --append "$(cat backup_cmdline) default_hugepagesz=2M"
     sudo systemctl kexec
 fi
 
@@ -45,7 +45,7 @@ if [ ! -f /root/dram2M ]; then
     ./dram.sh
     sudo touch /root/dram2M
     sudo hugeadm --pool-pages-max 2M:0
-    kexec -e "$(cat backup_cmdline) default_hugepagesz=1G"
+    kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r) --append "$(cat backup_cmdline) default_hugepagesz=1G"
     sudo systemctl kexec
 fi
 
@@ -58,7 +58,7 @@ if [ ! -f /root/dram1G ]; then
     ./dram.sh
     sudo touch /root/dram1G
     sudo hugeadm --pool-pages-max 1G:0
-    kexec -e "$(cat backup_cmdline) mmemmap=32G!4G"
+    kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r) --append "$(cat backup_cmdline) mmemmap=32G!4G"
     sudo systemctl kexec
 fi
 
