@@ -10,7 +10,7 @@ for i in {1..16}; do
         gcc gen.pub.c -lm -w > /dev/null
         ./a.out #run script generator
         gcc Apex.c -lm -w > /dev/null
-        sudo perf stat -ddd -x '|' -e task-clock -e dtlb_load_misses.miss_causes_a_walk --append -o perf_results/dram_${TLB_SIZE}_${T_LOC}_${S_LOC}.log ${HUGECTL_CMD} ./a.out > ../output.txt
+        sudo perf stat -ddd -x '|' -e task-clock -e dtlb_load_misses.miss_causes_a_walk --append -o perf_results/dram_${TLB_SIZE}_${T_LOC}_${S_LOC}.log ${HUGECTL_CMD} ./a.out >> ../output.txt
     done
 done
 
