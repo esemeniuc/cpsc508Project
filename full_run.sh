@@ -63,7 +63,7 @@ if [ ! -f state_dram1G ]; then
     ./dram.sh
     touch state_dram1G
     sudo hugeadm --pool-pages-max 1G:0
-    sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) memmap=32G\!4G"
+    sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) memmap=32G!4G"
     sudo systemctl kexec
     exit 0
 fi
