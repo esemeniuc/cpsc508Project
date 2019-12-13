@@ -3,6 +3,14 @@ CPSC 508/436C with Margo Seltzer
 
 Idea list: https://docs.google.com/spreadsheets/d/1d5IcAig6RYBsYNjxQyyqtmS26Ah80Q3ZWhdd11BQCLo/edit#gid=0
 
+### How to run
+
+```bash
+git clone https://github.com/esemeniuc/cpsc508Project.git
+cd cpsc508Project
+./full_run.sh
+```
+
 
 ### Determining & Managing Page Size
 
