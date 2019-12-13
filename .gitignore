@@ -107,3 +107,4 @@ libvmmap/
 .idea/
 bin/
 a.out
+dump.rdb
