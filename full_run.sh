@@ -85,7 +85,7 @@ if [ ! -f state_pmem ]; then
     done
 
     touch state_pmem
-#    sudo shutdown -r now
+    sudo shutdown -r now
     exit 0
 fi
 
