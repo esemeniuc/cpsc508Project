@@ -44,7 +44,7 @@ if [ ! -f state_dram2M ]; then
     echo "RUNNING 2M"
     export HUGECTL_CMD="hugectl --heap"
     export TLB_SIZE="2M"
-    sudo hugeadm --pool-pages-max 2M:10240
+    sudo hugeadm --pool-pages-max 2M:20480 #allocate 40GB
     ./dram.sh
     touch state_dram2M
     sudo hugeadm --pool-pages-max 2M:0
@@ -58,11 +58,11 @@ if [ ! -f state_dram1G ]; then
     echo "RUNNING 1G"
     export HUGECTL_CMD="hugectl --heap"
     export TLB_SIZE="1G"
-    sudo hugeadm --pool-pages-max 1G:20
+    sudo hugeadm --pool-pages-min 1G:40
     ./dram.sh
     touch state_dram1G
     sudo hugeadm --pool-pages-max 1G:0
-    sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) mmemmap=32G!4G"
+    sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) memmap=32G!4G"
     sudo systemctl kexec
     exit 0
 fi
