@@ -26,14 +26,14 @@ ExecStart=/bin/bash -c "${SCRIPT} &>> ${SCRIPTPATH}/output.txt"
 [Install]
 WantedBy=multi-user.target
 EOF
-
+    sudo systemctl enable benchmark
     touch state_setup
 
     if [ "$1" == "prototype" ]; then
         sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) memmap=32G!4G"
         sudo systemctl kexec
     else
-        sudo systemctl enable --now benchmark
+        sudo systemctl start benchmark
     fi
     exit 0 #avoid race until reboot kicks in
 fi
