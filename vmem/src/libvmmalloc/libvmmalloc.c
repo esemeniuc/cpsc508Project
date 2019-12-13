@@ -405,8 +405,6 @@ libvmmalloc_create(const char *dir, size_t size)
 	size = roundup(size, Pagesize);
 
 	//Fd = util_tmpfile(dir, "/vmem.XXXXXX", O_EXCL);
-	
-	
 	Fd = open(dir, O_RDWR);
 	/*
 	if (Fd == -1)
@@ -420,7 +418,6 @@ libvmmalloc_create(const char *dir, size_t size)
         */
 	void *addr;
 	
-	//out_log("sdf", 0 ,0,0, 0);
 	
 	/*
 	if ((addr = util_map(Fd, size, MAP_SHARED, 0, 4 << 20, NULL)) == NULL) {
@@ -428,11 +425,8 @@ libvmmalloc_create(const char *dir, size_t size)
 		return NULL;
 	}
 
-	
 	*/
 	
-	//NOTE SETTING THIS TO NULL MIGHT CAUSE PAGE ALINGMENT ISSUES
-	//int * vmem = addr;
 	addr =  mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, Fd, 0);//x140000000);
 	/* store opaque info at beginning of mapped area */
 	//add some stuff here to check if memmap worked
@@ -440,16 +434,6 @@ libvmmalloc_create(const char *dir, size_t size)
     		out_log("Error with mmap", 0,0,0,0);
   	}
 
-	/*
-  	for (int i = 0; i < 100; i++) {
-	            char buf[1] = { i };
-		              vmem[i] = buf[0];
-			        }
-
-    	for (int i = 0; i < 100; i++) {
-	              if()
-		        }
-	*/
 	struct vmem *vmp = addr;
 	memset(&vmp->hdr, '\0', sizeof(vmp->hdr));
 	memcpy(vmp->hdr.signature, VMEM_HDR_SIG, POOL_HDR_SIG_LEN);
@@ -457,8 +441,6 @@ libvmmalloc_create(const char *dir, size_t size)
 	vmp->size = size;
 	vmp->caller_mapped = 0;
         
-	//out_log("before jemal", 0,0,0,0);
-
 	/* Prepare pool for jemalloc */
 	if (je_vmem_pool_create((void *)((uintptr_t)addr + Header_size),
 			size - Header_size, 0 /* zeroed */,
@@ -467,8 +449,6 @@ libvmmalloc_create(const char *dir, size_t size)
 		util_unmap(vmp->addr, vmp->size);
 		return NULL;
 	}
-
-	//out_log("afeter",0,0,0,0);
 
 	/*
 	 * If possible, turn off all permissions on the pool header page.
