@@ -68,32 +68,22 @@ if [ ! -f state_dram1G ]; then
     exit 0
 fi
 
-#4K pmem
-if [ ! -f state_pmem4K ]; then
-    echo "RUNNING 4K pmem"
+#pmem
+if [ ! -f state_pmem ]; then
     export HUGECTL_CMD=""
+    echo "RUNNING 4K pmem"
     export TLB_SIZE="4K"
     sudo ndctl create-namespace -e namespace0.0 -m devdax -a 4K -f
     ./pmem.sh
-    touch state_pmem4K
-fi
 
-#2M pmem
-if [ ! -f state_pmem2M ]; then
     echo "RUNNING 2M pmem"
-    export HUGECTL_CMD=""
     export TLB_SIZE="2M"
     sudo ndctl create-namespace -e namespace0.0 -m devdax -a 2M -f
     ./pmem.sh
-    touch state_pmem2M
-fi
 
-#1G pmem
-if [ ! -f state_pmem1G ]; then
     echo "RUNNING 1G pmem"
-    export HUGECTL_CMD=""
     export TLB_SIZE="1G"
     sudo ndctl create-namespace -e namespace0.0 -m devdax -a 1G -f
     ./pmem.sh
-    touch state_pmem1G
+    touch state_pmem
 fi
