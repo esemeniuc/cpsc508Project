@@ -6,4 +6,4 @@ mkdir -p redis_results
 sleep 5 #let server boot up
 redis-benchmark -n 10000 -r 100 -t GET,SET -d 512000 --csv >> redis_results/pmem_${TLB_SIZE}.log
 sudo killall redis-server
-
+rm -f dump.rdb
