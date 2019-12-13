@@ -1,9 +1,12 @@
 #!/bin/bash
+#usage: run from git root
+#add "prototype" flag for fast iteration and no real pmem
 
 set -x
 SCRIPT=`realpath $0`
 SCRIPTPATH=`dirname $SCRIPT`
-LOOP_COUNT=1
+LOOP_COUNT=20
+if [ $2 == "prototype" ]; then LOOP_COUNT=1; fi
 
 cd ${SCRIPTPATH} || exit #script expects to be in git root
 
@@ -25,9 +28,14 @@ EOF
 
     touch state_setup
     sudo systemctl enable benchmark.service
-    sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) memmap=32G!4G"
-    sudo systemctl kexec
-    exit 0 #use to stop race until reboot kicks in
+
+    if [ $2 == "prototype" ]; then
+        sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) memmap=32G!4G"
+        sudo systemctl kexec
+    else
+        sudo systemctl enable --now benchmark
+    fi
+    exit 0 #avoid race until reboot kicks in
 fi
 
 #pmem
