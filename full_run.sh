@@ -5,7 +5,7 @@
 set -x
 SCRIPT=`realpath $0`
 SCRIPTPATH=`dirname $SCRIPT`
-LOOP_COUNT=20
+LOOP_COUNT=5
 if [ "$1" == "prototype" ]; then LOOP_COUNT=1; fi
 
 cd ${SCRIPTPATH} || exit #script expects to be in git root
