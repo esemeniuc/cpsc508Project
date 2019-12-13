@@ -1,10 +1,13 @@
 #!/bin/bash
 #usage: run from git root
-#add "prototype" flag for fast iteration and no real pmem
+#add "prototype" flag for fast iteration on emulated pmem
+
+#this script creates temp files to remember its state
+#have state for pmem, {4K,2M,1G} dram
 
 set -x
-SCRIPT=`realpath $0`
-SCRIPTPATH=`dirname $SCRIPT`
+SCRIPT=$(realpath $0)
+SCRIPTPATH=$(dirname $SCRIPT)
 LOOP_COUNT=5
 if [ "$1" == "prototype" ]; then LOOP_COUNT=1; fi
 
@@ -35,7 +38,7 @@ EOF
     else
         sudo systemctl start benchmark
     fi
-    exit 0 #avoid race until reboot kicks in
+    exit 0 #avoid race condition until reboot kicks in
 fi
 
 #pmem
@@ -79,7 +82,7 @@ if [ ! -f state_dram4K ]; then
     touch state_dram4K
     sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) default_hugepagesz=2M"
     sudo systemctl kexec
-    exit 0 #use to stop race until reboot kicks in
+    exit 0  #avoid race condition until reboot kicks in
 fi
 
 #2M dram
@@ -113,4 +116,4 @@ if [ ! -f state_dram1G ]; then
     exit 0
 fi
 
-
+echo "Finished running"

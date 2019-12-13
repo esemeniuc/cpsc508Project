@@ -1,10 +1,15 @@
 #!/bin/bash
 
+#clean allocations
 sudo hugeadm --pool-pages-max 2M:0
 sudo hugeadm --pool-pages-max 1G:0
+
+#stop service
 sudo systemctl stop benchmark
 sudo systemctl disable benchmark
 sudo rm /etc/systemd/system/benchmark.service
+
+#clean temp files
 sudo rm state_setup state_dram4K state_dram2M state_dram1G state_pmem output.txt
 rm -f apex-map/Apex.c apex-map/input
 

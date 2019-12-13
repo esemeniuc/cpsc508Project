@@ -1,5 +1,6 @@
 #!/bin/sh
 
+#python2 for hugeadm
 sudo dnf install -y kexec-tools python2 perf ndctl redis psmisc @development-tools autoconf ccache
 
 #backend for hugepages
