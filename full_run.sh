@@ -15,9 +15,8 @@ cd ${SCRIPTPATH} || exit #script expects to be in git root
 
 if [ ! -f state_setup ]; then
     echo "RUNNING SETUP"
-
+    ./setup.sh
     if [ "$1" == "prototype" ]; then
-        ./setup.sh
         #shrink the problem size
         sed -i "s/16/1/" apex-map/apex_dram.sh apex-map/apex_pmem.sh
         sed -i "s/ 100 / 1 /" simple_tests/memory_stress_dram.c simple_tests/memory_stress_pmem.c
