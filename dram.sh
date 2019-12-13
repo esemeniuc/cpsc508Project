@@ -1,6 +1,10 @@
 #!/bin/bash
 set -x
 
+#redis
+(cd redis || exit
+./redis_dram.sh)
+
 #apex
 (cd apex-map || exit
 ./apex_dram.sh) #using subshell
@@ -14,10 +18,6 @@ set -x
 ./compile_polybench.sh
 ./polybench_dram.sh
 rm -rf bin)
-
-#redis
-(cd redis || exit
-./redis_dram.sh)
 
 #simple_tests
 (cd simple_tests || exit
