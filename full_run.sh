@@ -124,3 +124,4 @@ if [ ! -f state_dram1G ]; then
 fi
 
 echo "Finished running"
+sudo systemctl disable benchmark
