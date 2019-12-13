@@ -16,3 +16,7 @@ rm -f apex-map/Apex.c apex-map/input
 find . -type d -name perf_results -exec rm -rf {} \; #delete all folders named 'perf_results'
 find . -type d -name fio_results -exec rm -rf {} \; #delete all folders named 'fio_results'
 find . -type d -name redis_results -exec rm -rf {} \; #delete all folders named 'redis_results'
+
+#clean prototype hacks
+git checkout apex-map
+git checkout simple_tests

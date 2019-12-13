@@ -15,7 +15,13 @@ cd ${SCRIPTPATH} || exit #script expects to be in git root
 
 if [ ! -f state_setup ]; then
     echo "RUNNING SETUP"
-    if [ "$1" != "prototype" ]; then ./setup.sh; fi
+
+    if [ "$1" == "prototype" ]; then
+        ./setup.sh
+        #shrink the problem size
+        sed -i "s/16/1/" apex-map/apex_dram.sh apex-map/apex_pmem.sh
+        sed -i "s/ 100 / 1 /" simple_tests/memory_stress_dram.c simple_tests/memory_stress_pmem.c
+    fi
 
     cat /proc/cmdline > backup_cmdline
     sudo tee /etc/systemd/system/benchmark.service <<EOF
@@ -32,6 +38,7 @@ EOF
     sudo systemctl enable benchmark
     touch state_setup
 
+    #use emulated pmem
     if [ "$1" == "prototype" ]; then
         sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) memmap=32G!4G"
         sudo systemctl kexec
