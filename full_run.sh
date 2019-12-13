@@ -12,7 +12,8 @@ cd ${SCRIPTPATH} || exit #script expects to be in git root
 
 if [ ! -f state_setup ]; then
     echo "RUNNING SETUP"
-    #./setup.sh
+    if [ "$1" != "prototype" ]; then ./setup.sh; fi
+
     cat /proc/cmdline > backup_cmdline
     sudo tee /etc/systemd/system/benchmark.service <<EOF
 [Unit]
