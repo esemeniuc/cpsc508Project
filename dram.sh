@@ -15,6 +15,10 @@ set -x
 ./polybench_dram.sh
 rm -rf bin)
 
+#redis
+(cd redis || exit
+./redis_dram.sh)
+
 #simple_tests
 (cd simple_tests || exit
 ./simple_dram.sh)

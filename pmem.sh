@@ -15,6 +15,10 @@ set -x
 ./polybench_pmem.sh
 rm -rf bin)
 
+#redis
+(cd redis || exit
+./redis_pmem.sh)
+
 #simple_tests
 (cd simple_tests || exit
 ./simple_pmem.sh)
