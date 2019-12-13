@@ -51,29 +51,32 @@ fi
 #pmem
 if [ ! -f state_pmem ]; then
     export HUGECTL_CMD=""
+    export DAX_DEVICE="/dev/dax1.0"
     echo "RUNNING 4K pmem"
     export TLB_SIZE="4K"
-    sudo ndctl create-namespace -e namespace0.0 -m devdax -a 4K -f
+#    sudo ndctl create-namespace -e namespace0.0 -m devdax -a 4K -f
     for _ in $(seq 1 $LOOP_COUNT); do
         ./pmem.sh
     done
 
     echo "RUNNING 2M pmem"
     export TLB_SIZE="2M"
-    sudo ndctl create-namespace -e namespace0.0 -m devdax -a 2M -f
+    export DAX_DEVICE="/dev/dax2.0"
+#    sudo ndctl create-namespace -e namespace0.0 -m devdax -a 2M -f
     for _ in $(seq 1 $LOOP_COUNT); do
         ./pmem.sh
     done
 
     echo "RUNNING 1G pmem"
     export TLB_SIZE="1G"
-    sudo ndctl create-namespace -e namespace0.0 -m devdax -a 1G -f
+    export DAX_DEVICE="/dev/dax5.0"
+#    sudo ndctl create-namespace -e namespace0.0 -m devdax -a 1G -f
     for _ in $(seq 1 $LOOP_COUNT); do
         ./pmem.sh
     done
 
     touch state_pmem
-    sudo shutdown -r now
+#    sudo shutdown -r now
     exit 0
 fi
 

@@ -11,18 +11,17 @@ for line in fileinput.input(filename, inplace=1, backup='.orig'):
         print(line[:-1])
 fileinput.close()
 
-
 with open(filename, "r") as f:
     dataframes = []
     stringy = f.read()
     stringy = stringy.split("NewDataFrame")
-    for frames in  stringy:
-        if (not(frames.__eq__(""))):
+    for frames in stringy:
+        if frames != "":
             #  parse text into frame for panda
             temp = StringIO(frames)
             csvdata = pandas.read_csv(temp, "|", header=None)
-            updated = (csvdata.drop(columns=[1,3,4,5,6]))
-            updated = updated.reindex(columns=[2,0])
+            updated = csvdata.drop(columns=[1, 3, 4, 5, 6])
+            updated = updated.reindex(columns=[2, 0])
 
             updated = updated.transpose()
             updated.columns = updated.iloc[0]
@@ -35,4 +34,3 @@ with open(filename, "r") as f:
     cols = final.columns
     final[cols] = final[cols].apply(pandas.to_numeric, errors='coerce')
     print(final.mean())
-
