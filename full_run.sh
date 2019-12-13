@@ -50,6 +50,7 @@ fi
 #pmem
 if [ ! -f state_pmem ]; then
     export HUGECTL_CMD=""
+    export DAX_DEVICE="/dev/dax0.0"
 
     echo "RUNNING 4K pmem"
     export TLB_SIZE="4K"
