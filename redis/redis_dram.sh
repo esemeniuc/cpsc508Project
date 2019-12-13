@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 mkdir -p perf_results
 mkdir -p redis_results
 ${HUGECTL_CMD} redis-server &

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 mkdir -p perf_results
 mkdir -p redis_results
 VMMALLOC_POOL_DIR=/dev/dax0.0 VMMALLOC_POOL_SIZE=30064771072 LD_PRELOAD=/usr/local/lib64/vmem_debug/libvmmalloc.so.1.0.0 redis-server &
