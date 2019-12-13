@@ -2,9 +2,10 @@
 
 sudo dnf install -y kexec-tools \
 python2 \ #for hugeadm
-perf
-ndctl
-redis
+perf \
+ndctl \
+redis \
+psmisc \ #for killall
 @development-tools
 
 #backend for hugepages
