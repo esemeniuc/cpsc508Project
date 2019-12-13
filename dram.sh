@@ -2,7 +2,7 @@
 set -x
 
 #apex
-(cd apex-map/apex-map || exit
+(cd apex-map || exit
 ./apex_dram.sh) #using subshell
 
 #fio
