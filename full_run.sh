@@ -6,7 +6,7 @@ set -x
 SCRIPT=`realpath $0`
 SCRIPTPATH=`dirname $SCRIPT`
 LOOP_COUNT=20
-if [ "$2" == "prototype" ]; then LOOP_COUNT=1; fi
+if [ "$1" == "prototype" ]; then LOOP_COUNT=1; fi
 
 cd ${SCRIPTPATH} || exit #script expects to be in git root
 
@@ -27,9 +27,8 @@ WantedBy=multi-user.target
 EOF
 
     touch state_setup
-    sudo systemctl enable benchmark.service
 
-    if [ "$2" == "prototype" ]; then
+    if [ "$1" == "prototype" ]; then
         sudo kexec -l /boot/vmlinuz-$(uname -r) --initrd /boot/initramfs-$(uname -r).img --append "$(cat backup_cmdline) memmap=32G!4G"
         sudo systemctl kexec
     else
